@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/waficLawand/intro-to-web-project/issues"
   },
-  "homepage": "https://github.com/waficLawand/intro-to-web-project#readme"
+  "homepage": "https://github.com/waficLawand/intro-to-web-project#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
 }

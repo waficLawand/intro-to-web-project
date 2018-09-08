@@ -1,8 +1,23 @@
+
+// Requiring packages that will be used in the project
 var express = require("express"),
     app = express(),
-    mySql   = require("mysql");
+    mySql   = require("mysql"),
+    bodyParser = require("body-parser"),
+    session = require("express-session");
+    app.use(bodyParser.urlencoded({extended:true}));
+// Securing assets and stylesheets in public directory 
     app.use(express.static(__dirname+"/public"));
+// Adding an express session with a certain age    
+    app.use(session({
+        secret:"waficIsTheBestDev",
+        resave: false,
+        saveUninitialized: true,
+        cookie: {maxAge:60000}
 
+    }));
+
+// Connecting to SQL database
 var connection = mySql.createPool({
     host: 'localhost',
     user: 'root',
@@ -22,12 +37,41 @@ connection.getConnection(function(err,connection){
 });
 
 
+
 app.get("/",function(req,res){
 
     res.render("landing.ejs");
 });
 
-app.get("/signup",function(req,res){
+app.post("/register",function(req,res){
+    var users = 
+    {
+        "ID":req.body.id,
+        "email":req.body.email,
+        "password":req.body.password
+
+    };
+
+    connection.query ('INSERT INTO users SET ?',users,function(error,results,fields){
+        if(error)
+        {
+            console.log(error);
+            res.redirect("/register",{"code":400,
+                                        "failed":"error occured"});
+        
+         
+        }
+        else {
+            res.render("secret.ejs",{"code":200,
+                                        "success":"user registered successfully!"});
+            console.log('The solution is: ', results);
+    
+
+        }
+    });
+});
+
+app.get("/register",function(req,res){
     res.render("signup.ejs");
 });
 

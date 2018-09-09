@@ -75,6 +75,47 @@ app.get("/register",function(req,res){
     res.render("signup.ejs");
 });
 
+app.post("/login",function(req,res){
+    var id = req.body.id;
+    var password = req.body.password;
+    connection.query('SELECT * FROM users WHERE id =?',[id],function(error,results,fields){
+        if(error)
+        {
+            console.log("error occured");
+            res.send
+        }
+        else if(results.length > 0)
+        {
+            if(results[0].password == password)
+            {
+                res.render("secret.ejs",{"code":200, "success":"login successful"});
+            }
+            else 
+            {
+                res.send({
+                    "code":204,
+                    "success": "id and password do not match"
+                });
+        }
+        
+       
+        }
+
+        else
+        {
+            res.send({
+                "code":204,
+                "success":"id does not exits"
+                  });
+        }
+        
+    });
+
+
+});
+
+
+
 app.get("/login",function(req,res){
     res.render("signin.ejs");
 });

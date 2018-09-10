@@ -1,0 +1,18 @@
+.btn-primary{
+  background-color: #003571;
+  border-color: #003571;
+}
+.bg-dark{
+  background-color: #003571 !important;
+}
+.btn-outline-success{
+  background-color: white;
+  border-color: white ;
+  color: black;
+}
+.jumbotron{
+  background-image: url("intersection.png");
+}
+#navlogo{
+  margin-right: 10px;
+}

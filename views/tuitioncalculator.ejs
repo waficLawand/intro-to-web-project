@@ -1,19 +1,20 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="tuitioncalculator.css">
     <link rel='icon' href='favicon.ico' type='image/x-icon'/>
 	<title>Tuition Calculator</title>
 </head>
-<body>
+<body> -->
 
-<!-- navabar -->
+<%include partials/header%>
 <h1>Tuition Calculator</h1>
+
 <div><form>
-  <p><label>University Credits:</label>
-	<input type="number" name="Number of University Credits"></p>
-  <p><label>Faculty Credits:</label>
-  <input type="number" name="Number of Faculty Credits"></p>
+  <p><label for="unicredits">University Credits:</label>
+	<input type="number" name="Number of University Credits" id="unicredits"></p>
+  <p><label for="facultycredits">Faculty Credits:</label>
+  <input type="number" name="Number of Faculty Credits" id="facultycredits"></p>
 </form></div>
  <p></p>
 
@@ -50,8 +51,7 @@
           <a href="#">Full Year (including Summer Semester)</a>
         </div>
 </div>
-
-<p><input type="checkbox" name="gg">National Social Security Health Insurance</p>
+<p><label class="container"><input type="checkbox" name="gg" checked="checked"> National Social Security Health Insurance<span class="checkmark"></span></label></p>
 <button class="dropbtn">Calculate</button>
 </body>
 </html>

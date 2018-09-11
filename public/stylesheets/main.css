@@ -1,9 +1,9 @@
-  #header{
-    font-weight: bold;
-  }
-  .display-3{
-    padding-top: 180px;
-  }
+#header{
+  font-weight: bold;
+}
+.display-3{
+  padding-top: 180px;
+}
   .bg-dark{
     background-color: #003571!important;
   }
@@ -129,6 +129,7 @@
   display: relative;
   position: relative;
   padding-left: 35px;
+/*   margin-bottom: 12px;*/
   cursor: pointer;
   font-size:18px;
   -webkit-user-select: none;
@@ -136,9 +137,6 @@
   -ms-user-select: none;
   user-select: none;
   text-align: center;
-  /* margin-top: 160px; */
-  
- 
 }
 /* Create a custom checkbox */
 .checkmark {

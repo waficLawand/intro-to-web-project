@@ -1,6 +1,9 @@
 #header{
     font-weight: bold;
   }
+  .display-3{
+    padding-top: 30px;
+  }
   .bg-dark{
     background-color: #003571!important;
   }
@@ -8,7 +11,13 @@
     padding-left:10px;
   }
   .jumbotron{
-    background-image: url(/assets/intersection.png);
+    background-image: url(/assets/aerial-photography-aerial-shot-aerial-view-1388982.jpg);
+    height:400px;
+    color:white;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .form-signin {
@@ -53,8 +62,9 @@
   
   body{
     background-color: #f5f5f5;
-    background-image: url("intersection.png");
     text-align: center;
+    /* change */
+    font-family: 'Old Standard TT', serif!important;
   }
   .signup{
     color:#003571;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 // Requiring packages that will be used in the project
 var express = require("express"),
@@ -18,6 +19,13 @@ var express = require("express"),
     }));
 
 // Connecting to SQL database
+=======
+var express = require("express"),
+    app = express(),
+    mySql   = require("mysql");
+    app.use(express.static(__dirname+"/public"));
+
+>>>>>>> front-end
 var connection = mySql.createPool({
     host: 'localhost',
     user: 'root',
@@ -37,12 +45,16 @@ connection.getConnection(function(err,connection){
 });
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> front-end
 app.get("/",function(req,res){
 
     res.render("landing.ejs");
 });
 
+<<<<<<< HEAD
 app.post("/register",function(req,res){
     var users = 
     {
@@ -119,10 +131,24 @@ app.post("/login",function(req,res){
 
 
 
+=======
+app.get("/signup",function(req,res){
+    res.render("signup.ejs");
+});
+
+>>>>>>> front-end
 app.get("/login",function(req,res){
     res.render("signin.ejs");
 });
 
+<<<<<<< HEAD
+=======
+app.get("/tuitionCalculator",function(req,res)
+{
+    res.render("tuitioncalculator.ejs");
+});
+
+>>>>>>> front-end
 
 
 

@@ -35,6 +35,11 @@ app.get("/login",function(req,res){
     res.render("signin.ejs");
 });
 
+app.get("/tuitionCalculator",function(req,res)
+{
+    res.render("tuitioncalculator.ejs");
+});
+
 
 
 

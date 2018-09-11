@@ -78,6 +78,7 @@ app.get("/register",function(req,res){
 app.post("/login",function(req,res){
     var id = req.body.id;
     var password = req.body.password;
+    
     connection.query('SELECT * FROM users WHERE id =?',[id],function(error,results,fields){
         if(error)
         {
@@ -88,7 +89,9 @@ app.post("/login",function(req,res){
         {
             if(results[0].password == password)
             {
-                res.render("secret.ejs",{"code":200, "success":"login successful"});
+               
+                console.log(id);
+                res.render("secret.ejs",{"code":200, loginStatus:"login successful",user:username});
             }
             else 
             {

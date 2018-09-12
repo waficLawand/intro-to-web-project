@@ -3,7 +3,11 @@ var express = require("express"),
     app = express(),
     mySql   = require("mysql"),
     bodyParser = require("body-parser"),
-    session = require("express-session");
+    session = require("express-session"),
+    LocalStrategy   = require('passport-local').Strategy,
+    passport = require("passport");
+    var loggedInUser;
+    var isLoggedin = false;
     app.use(bodyParser.urlencoded({extended:true}));
 // Securing assets and stylesheets in public directory 
     app.use(express.static(__dirname+"/public"));
@@ -15,6 +19,9 @@ var express = require("express"),
         cookie: {maxAge:60000}
 
     }));
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
 // Connecting to SQL database
 var connection = mySql.createPool({
@@ -39,16 +46,18 @@ connection.getConnection(function(err,connection){
 
 app.get("/",function(req,res){
 
-    res.render("landing.ejs");
+    res.render("landing.ejs",{loginStatus:isLoggedin,
+                                user:loggedInUser});
 });
 
 app.post("/register",function(req,res){
     var users = 
     {
-        "ID":req.body.id,
+        "id":req.body.id,
         "email":req.body.email,
-        "password":req.body.password
-
+        "password":req.body.password,
+        "firstName":req.body.firstName,
+        "lastName": req.body.lastName,
     };
 
     connection.query ('INSERT INTO users SET ?',users,function(error,results,fields){
@@ -56,13 +65,17 @@ app.post("/register",function(req,res){
         {
             console.log(error);
             res.redirect("/register",{"code":400,
-                                        "failed":"error occured"});
+                                        "failed":"error occured",
+                                    loginStatus:isLoggedin});
         
          
         }
         else {
+            console.log(fields);
+            isLoggedin =true;
             res.render("secret.ejs",{"code":200,
-                                        "success":"user registered successfully!"});
+                                        "success":"user registered successfully!",
+                                    loginStatus:isLoggedin});
             console.log('The solution is: ', results);
     
 
@@ -71,7 +84,7 @@ app.post("/register",function(req,res){
 });
 
 app.get("/register",function(req,res){
-    res.render("signup.ejs");
+    res.render("signup.ejs",{loginStatus:isLoggedin});
 });
 
 app.post("/login",function(req,res){
@@ -88,9 +101,10 @@ app.post("/login",function(req,res){
         {
             if(results[0].password == password)
             {
-               
-                console.log(id);
-                res.render("secret.ejs",{"code":200, loginStatus:"login successful",user:id});
+                isLoggedin = true;
+                loggedInUser = results[0].firstName+" "+results[0].lastName;
+                
+                res.render("secret.ejs",{"code":200, loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName});
             }
             else 
             {
@@ -113,13 +127,34 @@ app.post("/login",function(req,res){
         
     });
 
-
+    console.log("hello! "+loggedInUser);
 });
 
 
 
 app.get("/login",function(req,res){
-    res.render("signin.ejs");
+    res.render("signin.ejs",{loginStatus:isLoggedin});
+});
+
+app.get("/petitions",function(req,res){
+
+    if(isLoggedin)
+    {
+        res.render("petitions.ejs");
+    }
+    else
+    {
+       console.log("NOT LOGGED IN!");
+       res.redirect("/login");
+    }
+
+});
+
+app.get("/logout", function(req,res){
+
+    isLoggedin = false;
+    
+    res.redirect("/login");
 });
 
 

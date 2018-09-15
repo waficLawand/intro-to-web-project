@@ -138,15 +138,40 @@ app.get("/login",function(req,res){
 
 app.get("/petitions",function(req,res){
 
+
+
     if(isLoggedin)
     {
-        res.render("petitions.ejs");
+        
+    connection.query("SELECT * FROM petitions",function(err, rows){
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log(rows.length);
+            
+       
+        res.render("petitions.ejs",{loginStatus:isLoggedin,
+                                    user:loggedInUser,sqlData:rows});
+        }
+        
+    });
+   
+
+   
+    
     }
     else
     {
        console.log("NOT LOGGED IN!");
+       
        res.redirect("/login");
     }
+
+
+    
 
 });
 
@@ -156,7 +181,34 @@ app.get("/logout", function(req,res){
     
     res.redirect("/login");
 });
+app.post("/newPetition",function(req,res)
+{
+    var petitionPost=
+    {
+        "request":req.body.request,
+        "author": loggedInUser
+    };
+    connection.query("INSERT INTO petitions SET ?",petitionPost,function(error,result,fields){
+        if(error)
+        {
+            console.log("ERROR OCCURED WHILE POSTING THIS PETITION!!!");
+        }
+        else
+        {
+            console.log("PETITION ADDED!!");
+            res.redirect("/petitions");
 
+        }
+    });
+
+});
+
+app.get("/newPetition",function(req,res)
+{
+    
+    res.render("newPetition.ejs",{loginStatus:isLoggedin,
+        user:loggedInUser});
+});
 
 
 

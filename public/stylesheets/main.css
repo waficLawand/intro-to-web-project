@@ -181,6 +181,16 @@ border-width: 0 3px 3px 0;
 -ms-transform: rotate(45deg);
 transform: rotate(45deg);
 }
+#petitionsArea
+{
+ margin-left: 50px;
+ margin-top: 50px;
+  width: 50%;
+}
+#newPetition
+{
+  margin-top: 100px;
+}
 
 
     /*Focused Input*/

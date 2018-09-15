@@ -1,1 +1,13 @@
+<% include partials/header%>
+
 <h1>PETITIONS PAGE!!</h1>
+
+    <% for (var i = 0; i < sqlData.length; i++ ) {%>
+
+            <h1><%= sqlData[i].request%><a href="/petitionSigned" ><button class="btn btn-primary">Sign Petition</button></a></h1>
+
+        <%}%>
+   <a href="/newPetition"><button  id="newPetition" class="btn btn-primary">Add A New Petition</button></a> 
+
+
+<% include partials/footer%>

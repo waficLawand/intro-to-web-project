@@ -3,10 +3,19 @@
 <h1>PETITIONS PAGE!!</h1>
 
     <% for (var i = 0; i < sqlData.length; i++ ) {%>
+        <% var flag = false; %>
+        <% for (var x =0; x < petitionSigning.length; x++ ) { %>
+            <%if ((petitionSigning[x].userId == userId) && (petitionSigning[x].petitionId == sqlData[i].id)){%>
+           <%flag = true; %>
+            <%}%>
+            <%}%>
 
-            <h1><%= sqlData[i].request%><a href="/petitionSigned" ><button class="btn btn-primary">Sign Petition</button></a></h1>
-
+        <form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST"><h1><%= sqlData[i].request%><%if (flag) {%>SIGNED!!<%} else {%><a><button class="btn btn-primary">Sign Petition</button></a><%}%></form></h1>
+               
+            
         <%}%>
+    
+ 
    <a href="/newPetition"><button  id="newPetition" class="btn btn-primary">Add A New Petition</button></a> 
 
 

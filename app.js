@@ -6,8 +6,9 @@ var express = require("express"),
     session = require("express-session"),
     LocalStrategy   = require('passport-local').Strategy,
     passport = require("passport");
-    var loggedInUser;
+    var loggedInUser,loggedInId;
     var isLoggedin = false;
+    var signedUser;
     app.use(bodyParser.urlencoded({extended:true}));
 // Securing assets and stylesheets in public directory 
     app.use(express.static(__dirname+"/public"));
@@ -103,6 +104,7 @@ app.post("/login",function(req,res){
             {
                 isLoggedin = true;
                 loggedInUser = results[0].firstName+" "+results[0].lastName;
+                loggedInId = results[0].id;
                 
                 res.render("secret.ejs",{"code":200, loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName});
             }
@@ -138,8 +140,6 @@ app.get("/login",function(req,res){
 
 app.get("/petitions",function(req,res){
 
-
-
     if(isLoggedin)
     {
         
@@ -150,11 +150,23 @@ app.get("/petitions",function(req,res){
         }
         else
         {
+            
             console.log(rows.length);
+            connection.query("SELECT * FROM votedUsers",function(err,cols){
+                if(err)
+                {
+                    console.log(err);
+                }
+                else{
+                    signedUser = cols;
+                    res.render("petitions.ejs",{loginStatus:isLoggedin,
+                        user:loggedInUser,sqlData:rows, petitionSigning:signedUser,userId:loggedInId});
+                }
+
+            });
             
        
-        res.render("petitions.ejs",{loginStatus:isLoggedin,
-                                    user:loggedInUser,sqlData:rows});
+       
         }
         
     });
@@ -202,6 +214,44 @@ app.post("/newPetition",function(req,res)
     });
 
 });
+app.post("/petitionSigned/:id",function(req,res){
+    var id = req.params.id;
+    id = id.split(":").pop()
+    console.log(id);
+    connection.query('SELECT * FROM petitions WHERE id =?',[id],function(err,results,fields){
+        if(err)
+        {
+            console.log("Error Occured!")
+        } 
+        else
+        {
+            connection.query("UPDATE petitions SET votes = ? WHERE id = ?",[results[0].votes+1,id],function(err,rows){
+                if(err)
+                {
+                    console.log("Error incrementing the votes!");
+                }   
+                else{
+                    console.log("Petition was signed successfully!");
+
+                   connection.query("INSERT INTO votedUsers SET ?",[{"petitionId":id,"userId":loggedInId}],function(err,rows){
+                        if(err)
+                        {
+                            console.log(err);
+                        } else
+                        {
+                            res.redirect("/petitions");
+                        }
+
+                   });
+                   
+                }
+        });
+        }
+
+    });
+    
+});
+    
 
 app.get("/newPetition",function(req,res)
 {

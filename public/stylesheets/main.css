@@ -200,3 +200,9 @@ input[type=number] {
 input[type=number]:focus {
   border: 3px solid #555;
 }
+body{
+  margin-top:90px;
+}
+i.code{
+  font-size: 2em;
+}

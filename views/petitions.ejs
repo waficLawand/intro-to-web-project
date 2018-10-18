@@ -10,9 +10,38 @@
             <%}%>
             <%}%>
 
-        <form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST"><h1><%= sqlData[i].request%><%if (flag) {%>SIGNED!!<%} else {%><a><button class="btn btn-primary">Sign Petition</button></a><%}%></form></h1>
+
                
-            
+        <div class="ui main text container">
+                
+                <div class="ui top attached segment">
+                    <div class="ui divided items">
+                        
+                        
+                            <div class="item">
+                                    <div class="image">
+                                        <img src="/assets/aerial-photography-aerial-shot-aerial-view-1388982.jpg">
+                                    </div>
+                                    <div class="content">
+                                        <a class="header"><%= sqlData[i].request%></a>
+                                        <div class="meta">
+                                            <span class="cinema"></span>
+                                        </div>
+                                        <div class="description">
+                                                <form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST"><%if (flag) {%>SIGNED!!<%} else {%><a><button class="btn btn-primary">Sign Petition</button></a><%}%></form>
+                                        </div>
+                                        <div class="extra">
+                                            <a href="" class="ui floated basic violet button">
+                                                Read More
+                                                <i class="right chevron icon"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+
         <%}%>
     
  

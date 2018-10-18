@@ -265,3 +265,8 @@ app.get("/newPetition",function(req,res)
     app.listen(3000,function(){
         console.log("Servers are running!");
     });
+
+    app.get("/tuitionCalculater",function(req,res)
+    {
+        res.render("tuitioncalculator.ejs",{loginStatus:isLoggedin});
+    });

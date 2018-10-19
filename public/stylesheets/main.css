@@ -10,7 +10,7 @@
   .navbar-brand{
     padding-left:10px;
   }
-  .jumbotron{
+  /* .jumbotron{
     background-image: url(/assets/aerial-photography-aerial-shot-aerial-view-1388982.jpg);
     height:768px;
     color: white;
@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
-  }
+  } */
   
   .form-signin {
     align-items: center;
@@ -206,3 +206,103 @@ body{
 i.code{
   font-size: 2em;
 }
+
+
+
+
+
+
+
+
+
+
+/* background slide show for landing page */
+.slideshow { 
+  height: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.slideshow li { 
+  animation: imageAnimation 50s linear 2.5s infinite; 
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(1);
+  width: 100%;
+  z-index: 0;
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(/assets/1.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(/assets/2.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(/assets/3.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(/assets/4.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(/assets/maybe1.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0%, 40% { 
+    animation-timing-function: ease-in;
+    opacity: 0; 
+    transform: scale(1);
+  }
+  10% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+
+#landing-header {
+  padding-top: 40vh;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+#landing-header h1 {
+  color: #fff;
+  font-size: 5rem;
+  margin: 0.5em auto;
+}
+
+
+
+

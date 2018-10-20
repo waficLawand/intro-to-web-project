@@ -1,13 +1,37 @@
-<% include partials/header%>
-
-<h1>PETITIONS PAGE!!</h1>
-
-<form action="/newPetition" method="POST">
+<%include partials/header%>
+<form>
+  <div class="container">
+    <h1>Create A New Petition</h1>
     <div class="form-group">
-      
-      <textarea class="form-control" name="request" id="petitionsArea" rows="3"></textarea>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
     </div>
-    <button type="submit"  class="btn btn-primary">Post</button>
-  </form>
+    <div class="form-group">
+        <input type="text" class="form-control" id=""  placeholder="Raise The Petition for" list="raisePetitionFor">
+            <datalist id="raisePetitionFor">
+                <option value="Dean of The Faculty">
+                  <option value="Chair of The Department">
+                    <option value="Principle">
+                      <option value="IT team">
+            </datalist>
+      </div>
+ 
+      <div class="form-group">
+          <input type="url" class="form-control" name="signatureGoal" step="1" min="100" placeholder="Image URL" required>
+      </div>
+  
 
-<% include partials/footer%>
+    <div class="form-group">
+        <input type="number" class="form-control" name="signatureGoal" step="1" min="100" placeholder="Signature Goal" required>
+    </div>
+
+
+    <div class="form-group">
+    
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </form>
+  
+<%include partials/footer%>

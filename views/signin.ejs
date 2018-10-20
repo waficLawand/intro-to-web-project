@@ -1,20 +1,25 @@
 <%include partials/header%>
+<div class="container">
+    <div class="row">
+   
+        <div style=" width:30%;margin:25px auto;">
+            <form action="/login" method="POST" class="form-signin">
+              <div class="container">
+                  <h1 style="text-align: center;">Login</h1>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="id" placeholder="ID" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
 
-    <form class="form-signin" action="/login" method="POST">
-      <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal"><b>Please Login</b></h1>
-      <label for="inputEmail" class="sr-only">ID</label>
-      <input  id="inputEmail" class="form-control" name="id" placeholder="ID" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label class="container">
-          <input type="checkbox" value="remember-me" checked="checked" > Remember me<span class="checkmark"></span>
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
-      <p>Don't have an account? <a class="signup">Sign up now</a></p>
-    </form>
-  </body>
-</html>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Login</button>
+                </div>
+              </div>
+            </form>
+            <a href="/campground">Go back!</a>
+        </div>
+    </div>
+</div>
+<%include partials/footer%>

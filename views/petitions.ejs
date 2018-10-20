@@ -1,6 +1,24 @@
 <% include partials/header%>
+<main role="main">
 
-<h1>PETITIONS PAGE!!</h1>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Album example</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        <p>
+          
+                <a href="/newPetition"><button  id="newPetition" class="btn btn-primary">Add A New Petition</button></a>         </p>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+         
+    
+
+
 
     <% for (var i = 0; i < sqlData.length; i++ ) {%>
         <% var flag = false; %>
@@ -10,9 +28,26 @@
             <%}%>
             <%}%>
 
-
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="image">
+                  <img class="card-img-top" src="/assets/aerial-photography-aerial-shot-aerial-view-1388982.jpg" alt="Card image cap">
+                </div>
+                  <div class="overlay"></div>
+                  <div class="card-body">
+                    <p class="card-text"><%= sqlData[i].request%></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      </div>
+                      <form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST"><%if (flag) {%>SIGNED!!<%} else {%><a><button class="btn btn-primary">Sign Petition</button></a><%}%></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
                
-        <div class="ui main text container">
+        <!--<div class="ui main text container">
                 
                 <div class="ui top attached segment">
                     <div class="ui divided items">
@@ -40,12 +75,17 @@
                                 </div>
                             </div>
                         </div>
-        </div>
+        </div>-->
 
         <%}%>
-    
+         
+    </div>
+</div>
+</div>
+
+</main>
  
-   <a href="/newPetition"><button  id="newPetition" class="btn btn-primary">Add A New Petition</button></a> 
+   
 
 
 <% include partials/footer%>

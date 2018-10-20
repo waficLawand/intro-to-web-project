@@ -198,12 +198,17 @@ app.post("/newPetition",function(req,res)
     var petitionPost=
     {
         "request":req.body.request,
-        "author": loggedInUser
+        "author": loggedInUser,
+        "title":req.body.title,
+        "raisePetitionTo":req.body.raisePetitionTo,
+        "imageUrl":req.body.imageUrl,
+        "signatureGoal":req.body.signatureGoal
+
     };
     connection.query("INSERT INTO petitions SET ?",petitionPost,function(error,result,fields){
         if(error)
         {
-            console.log("ERROR OCCURED WHILE POSTING THIS PETITION!!!");
+            console.log(error);
         }
         else
         {
@@ -221,7 +226,7 @@ app.post("/petitionSigned/:id",function(req,res){
     connection.query('SELECT * FROM petitions WHERE id =?',[id],function(err,results,fields){
         if(err)
         {
-            console.log("Error Occured!")
+            console.log("err")
         } 
         else
         {
@@ -255,9 +260,18 @@ app.post("/petitionSigned/:id",function(req,res){
 
 app.get("/newPetition",function(req,res)
 {
+    if(isLoggedin)
+    {
+        res.render("newPetition.ejs",{loginStatus:isLoggedin,
+            user:loggedInUser});
+    }
+    else
+    {
+        console.log("NOT LOGGED IN!");
+       
+        res.redirect("/login");
+    }
     
-    res.render("newPetition.ejs",{loginStatus:isLoggedin,
-        user:loggedInUser});
 });
 
 

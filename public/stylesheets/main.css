@@ -103,7 +103,15 @@ body{
     margin-right: 20%;
     text-align: left;
 }
-
+.card-text
+{
+  font-size: small;
+}
+.progress-bar-animated
+{
+  color: black;
+  font-size: 15px;
+}
 
 
 

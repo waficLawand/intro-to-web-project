@@ -1,12 +1,12 @@
 <%include partials/header%>
-<form>
+<form action="/newPetition" method="POST">
   <div class="container">
     <h1>Create A New Petition</h1>
     <div class="form-group">
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+      <input type="text" class="form-control" name="title" placeholder="Title" required>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id=""  placeholder="Raise The Petition for" list="raisePetitionFor">
+        <input type="text" class="form-control" name="raisePetitionTo"  placeholder="Raise The Petition to" list="raisePetitionFor">
             <datalist id="raisePetitionFor">
                 <option value="Dean of The Faculty">
                   <option value="Chair of The Department">
@@ -16,7 +16,7 @@
       </div>
  
       <div class="form-group">
-          <input type="url" class="form-control" name="signatureGoal" step="1" min="100" placeholder="Image URL" required>
+          <input type="url" class="form-control" name="imageUrl" step="1" min="100" placeholder="Image URL" required>
       </div>
   
 
@@ -27,7 +27,7 @@
 
     <div class="form-group">
     
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description" name="request"></textarea>
       </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

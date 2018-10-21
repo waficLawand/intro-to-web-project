@@ -85,7 +85,7 @@ app.post("/register",function(req,res){
 });
 
 app.get("/register",function(req,res){
-    res.render("signup.ejs",{loginStatus:isLoggedin});
+    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"register"});
 });
 
 app.post("/login",function(req,res){
@@ -135,7 +135,7 @@ app.post("/login",function(req,res){
 
 
 app.get("/login",function(req,res){
-    res.render("signin.ejs",{loginStatus:isLoggedin});
+    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"login"});
 });
 
 app.get("/petitions",function(req,res){

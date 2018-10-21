@@ -27,11 +27,10 @@
            <%flag = true; %>
             <%}%>
             <%}%>
-
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="image">
-                  <img class="card-img-top" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image">
+                  <a href="/petitions/show/:<%=sqlData[i].id%>"><img class="card-img-top" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
                 </div>
                   <div class="overlay"></div>
                   <div class="card-body">
@@ -83,7 +82,6 @@
                             </div>
                         </div>
         </div>-->
-
         <%}%>
          
     </div>

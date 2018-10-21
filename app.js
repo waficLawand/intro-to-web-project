@@ -274,13 +274,32 @@ app.get("/newPetition",function(req,res)
     
 });
 
+app.get("/petitions/show/:id",function(req,res)
+{
+    var id = req.params.id;
+    id = id.split(":").pop()
+    console.log(id)
+    connection.query("SELECT * FROM petitions WHERE id =?",[id],function(err,rows)
+    {
+         if(err)
+         {
+             console.log(err);
+         }
+        else
+        {
+            res.render("show.ejs",{petitionDetails:rows[0]});
+        }
+    });
+});
+
+app.get("/tuitionCalculater",function(req,res)
+    {
+        res.render("tuitioncalculator.ejs",{loginStatus:isLoggedin});
+    });
 
 
     app.listen(3000,function(){
         console.log("Servers are running!");
     });
 
-    app.get("/tuitionCalculater",function(req,res)
-    {
-        res.render("tuitioncalculator.ejs",{loginStatus:isLoggedin});
-    });
+    

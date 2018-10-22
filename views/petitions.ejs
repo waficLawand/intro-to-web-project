@@ -29,8 +29,11 @@
             <%}%>
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <div class="image">
-                  <a href="/petitions/show/:<%=sqlData[i].id%>"><img class="card-img-top" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
+                    <div class="image hvrbox">
+                  <a href="/petitions/show/:<%=sqlData[i].id%>"><img class="card-img-top hvrbox-layer_bottom" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
+                  <a href="/petitions/show/:<%=sqlData[i].id%>"> <div class="hvrbox-layer_top">
+                   <div class="hvrbox-text">Sign Petition</div>
+                </div></a>
                 </div>
                   <div class="overlay"></div>
                   <div class="card-body">

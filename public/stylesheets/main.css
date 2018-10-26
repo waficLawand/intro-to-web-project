@@ -5,10 +5,20 @@ body{
   
 }
 footer{
-  text-align: center;
-  color: gray;
-  background-image: url(/assets/3.jpg);
+  background: url("/assets/footer1.png") no-repeat 400px center;
+  height:250px;  
+  font-size: 18px;
 }
+footer div{
+  float: left;
+  width: 30%;
+  padding-top: 40px;
+  padding-left: 40px;
+}
+footer, footer a {
+  color: #40356F ;
+}
+
 html
 {
   height: 100%;
@@ -126,7 +136,7 @@ html
 }
 
 .register{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  background: -webkit-linear-gradient(left, #40356F, #69E9F5);
   margin-top: 3%;
   padding: 3%;
  height: 100%; 

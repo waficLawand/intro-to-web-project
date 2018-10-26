@@ -286,3 +286,26 @@ html
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
 }
+
+.hvrbox .hvrbox-layer_top-signed {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background:green;
+	color: #fff;
+	padding: 15px;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+}
+.hvrbox:hover .hvrbox-layer_top-signed,
+.hvrbox.active .hvrbox-layer_top-signed {
+	opacity: 1;
+}
+

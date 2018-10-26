@@ -30,9 +30,18 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">               
                     <div class="image hvrbox">
-                  <a href="/petitions/show/:<%=sqlData[i].id%>"><img class="card-img-top hvrbox-layer_bottom" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
-                  <a href="/petitions/show/:<%=sqlData[i].id%>"> <div class="hvrbox-layer_top">
-                   <div class="hvrbox-text">Sign Petition</div>
+                        <%if(flag) {%>
+                  <a href="/petitions/show/:<%=sqlData[i].id%>"><img  class="card-img-top hvrbox-layer_bottom" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
+                  <a   href="#x"> <div class="hvrbox-layer_top-signed signed">
+                   <div class="hvrbox-text">Signed</div>
+                   <%} else {%>
+                    <a href="/petitions/show/:<%=sqlData[i].id%>"><img class="card-img-top hvrbox-layer_bottom" src="<%=sqlData[i].imageUrl%>" alt="Petition Image" title="Petition Image"></a>
+                    <form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST">
+                        <a href="#" onclick="$(this).closest('form').submit()"><div class="hvrbox-layer_top notSigned">
+                     <div class="hvrbox-text">Sign Petition</div>
+                    </form> 
+                     
+                    <%}%>
                 </div></a>
                 </div>    
                   <div class="overlay"></div>
@@ -96,4 +105,17 @@
    
 
 
-<% include partials/footer%>
+<footer class="container">
+        <p>&copy 2018 - 2019</p>
+        <a href="#">About</a> - <a href="mailto:hr@bauitools.com">Contact Us</a> - <a href="/assets/Terms of Service.pdf" download>Terms of Service</a>
+        </footer>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="/scripts/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="/scripts/bootbox.min.js"></script>
+        <script src="/scripts/petitions.js"></script>
+      </body>
+    </html>
+    

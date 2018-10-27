@@ -166,17 +166,17 @@ html
 .register-left img{
   margin-top: 15%;
   margin-bottom: 5%;
-  width: 25%;
+  width: 45%;
   -webkit-animation: mover 2s infinite  alternate;
   animation: mover 1s infinite  alternate;
 }
 @-webkit-keyframes mover {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
+  100% { transform: translateY(-30px); }
 }
 @keyframes mover {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
+  100% { transform: translateY(-30px); }
 }
 .register-left p{
   font-weight: lighter;
@@ -193,7 +193,7 @@ html
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #0062cc;
+  background: #40356F;
   color: #fff;
   font-weight: 600;
   width: 50%;
@@ -202,7 +202,7 @@ html
 .register .nav-tabs{
   margin-top: 3%;
   border: none;
-  background: #0062cc;
+  background: #40356F;
   border-radius: 1.5rem;
   width: 14%;
   float: right;
@@ -220,8 +220,8 @@ html
 }
 .register .nav-tabs .nav-link.active{
   width: 100px;
-  color: #0062cc;
-  border: 2px solid #0062cc;
+  color: #40356F;
+  border: 2px solid #40356F;
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
 }
@@ -235,7 +235,7 @@ html
 {
  border-radius: 1.5rem;
   padding: 2%;
-  background: #0062cc;
+  background: #40356F;
   color: #fff;
 }
 .hvrbox * {
@@ -263,7 +263,7 @@ html
 	bottom: 0;
 	width: 100%;
 	height: 100%;
-	background: #0062cc;
+	background: #40356F;
 	color: #fff;
 	padding: 15px;
 	-moz-transition: all 0.4s ease-in-out 0s;

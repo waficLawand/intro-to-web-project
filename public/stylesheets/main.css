@@ -2,6 +2,12 @@ body{
   margin-top: 60px;
   height: 100%;
 }
+
+html
+{
+  height: 100%;
+}
+/* footer */
 footer{
   background: url("/assets/footer1.png") no-repeat 400px center;
   height:250px;  
@@ -17,10 +23,6 @@ footer, footer a {
   color: #40356F ;
 }
 
-html
-{
-  height: 100%;
-}
 /* background slide show for landing page */
 .slideshow { 
   height: 100%;
@@ -94,7 +96,6 @@ html
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
-
 
 #landing-header {
   padding-top: 40vh;
@@ -227,7 +228,7 @@ html
   text-align: center;
   margin-top: 8%;
   margin-bottom: -15%;
-  color: #495057;
+  color: #40356f;
 }
 #loginBtn
 {
@@ -318,4 +319,16 @@ html
 .hvrbox.active .hvrbox-layer_top-signed {
 	opacity: 1;
 }
-
+/* navbar */
+.bg-dark{
+  background-color: white !important;
+}
+.navbar-dark .navbar-brand{
+  color: #40356F;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .nav-item.nav-link, .nav-link.disabled{
+  color:#40356f !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #40356f;
+}

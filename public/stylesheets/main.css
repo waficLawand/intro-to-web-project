@@ -7,11 +7,16 @@ html
 {
   height: 100%;
 }
+.container{
+  height:100%;
+}
 /* footer */
 footer{
+  float:;
   background: url("/assets/footer1.png") no-repeat 400px center;
   height:250px;  
   font-size: 18px;
+  bottom: 0px;
 }
 footer div{
   float: left;
@@ -329,6 +334,6 @@ footer, footer a {
 .navbar-dark .navbar-nav .active>.nav-link, .nav-item.nav-link, .nav-link.disabled{
   color:#40356f !important;
 }
-.navbar-dark .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link , .dropdown-item{
   color: #40356f;
 }

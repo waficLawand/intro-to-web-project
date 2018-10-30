@@ -292,7 +292,7 @@ app.get("/petitions/show/:id",function(req,res)
     });
 });
 
-app.get("/tuitionCalculater",function(req,res)
+app.get("/tuitionCalculator",function(req,res)
     {
         res.render("tuitioncalculator.ejs",{loginStatus:isLoggedin});
     });

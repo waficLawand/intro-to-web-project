@@ -299,7 +299,7 @@ app.get("/secret", function(req,res)
 
 app.get("/tuitionCalculator",function(req,res)
     {
-        res.render("tuitioncalculator.ejs",{loginStatus:isLoggedin});
+        res.render("tuitionCalc.ejs",{loginStatus:isLoggedin});
     });
 
 

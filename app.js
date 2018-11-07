@@ -287,9 +287,14 @@ app.get("/petitions/show/:id",function(req,res)
          }
         else
         {
-            res.render("show.ejs",{petitionDetails:rows[0]});
+            res.render("show.ejs",{petitionDetails:rows[0],loginStatus:isLoggedin, user:loggedInUser,petitionSigning:signedUser,userId:loggedInId});
         }
     });
+});
+app.get("/secret", function(req,res)
+{
+    res.render("secret.ejs",{loginStatus:isLoggedin,
+        user:loggedInUser,userId:loggedInId});
 });
 
 app.get("/tuitionCalculator",function(req,res)

@@ -1,2 +1,58 @@
-<h1><%= petitionDetails.title%></h1>
-<h1>dfggd</h1>
+
+
+
+<%include partials/header%>
+<% var flag =false;%>
+<% for (var x =0; x < petitionSigning.length; x++ ) { %>
+    <%if ((petitionSigning[x].userId == userId) && (petitionSigning[x].petitionId == petitionDetails.id)){%>
+   <%flag = true; %>
+    <%}%>
+    <%}%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src=<%=petitionDetails.imageUrl%>>
+                <div class="caption-full">
+                    
+                    <h4><a><%=petitionDetails.title%></a></h4>
+                    <p><%=petitionDetails.request%></p>
+                    <p><em>Submitted by <%=petitionDetails.author%></em></p>
+                    <%if(!flag) {%>
+                    <form action="/petitionSigned/:<%=petitionDetails.id%>" method="POST">
+                        <a href="#" onclick="$(this).closest('form').submit()"><button type="button" class="btn btn-outline-primary">Sign Petition</button></a>
+                    </form> 
+                    <%} else {%>
+                        <button type="button" class="btn btn-lg btn-primary signed">Petition Signed</button>
+                        <%}%>
+                   
+                </div>
+            </div>
+
+ 
+        </div>
+    </div>
+</div>
+
+<footer class="container">
+        <p>&copy 2018 - 2019</p>
+        <a href="#">About</a> - <a href="mailto:hr@bauitools.com">Contact Us</a> - <a href="/assets/Terms of Service.pdf" download>Terms of Service</a>
+        </footer>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="/scripts/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="/scripts/bootbox.min.js"></script>
+        <script src="/scripts/petitions.js"></script>
+      </body>
+    </html>
+    

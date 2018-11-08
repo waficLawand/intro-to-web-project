@@ -379,6 +379,10 @@ footer, footer a {
  }
 #h1pet{
   color: #40356f;
+  text-align: center;
+}
+#newpet{
+  margin-top:80px;
 }
 
 

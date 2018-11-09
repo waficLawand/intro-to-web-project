@@ -388,7 +388,7 @@ footer, footer a {
 
 
 
-
+/* Tuition Calculator */
 /* Style the form */
 #regForm {
   background-color: #ffffff;
@@ -437,5 +437,20 @@ input.invalid {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #4CAF50;
+  background-color: #40356f;
+}
+
+/* buttons */
+#prevBtn, #nextBtn{
+  color: white;
+  background: #40356F;
+  border-color:#40356f;
+  border-radius: 1.5rem;
+  margin-top: 3%;
+  border: none;
+  width: 100px;
+  height: 30px;
+}
+#h1calc{
+  margin-bottom: 5%;
 }

@@ -51,7 +51,7 @@ app.get("/",function(req,res){
                                 user:loggedInUser});
 });
 
-app.post("/register",function(req,res){
+/*app.post("/register",function(req,res){
     var users = 
     {
         "id":req.body.id,
@@ -74,13 +74,45 @@ app.post("/register",function(req,res){
         else {
             console.log(fields);
             isLoggedin =true;
+            
             res.render("secret.ejs",{"code":200,
                                         "success":"user registered successfully!",
-                                    loginStatus:isLoggedin});
+                                    loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName});
             console.log('The solution is: ', results);
     
 
         }
+    });
+});*/
+
+
+
+app.post("/register",function(req,res){
+    var users = 
+    {
+        "ID":req.body.id,
+        "email":req.body.email,
+        "password":req.body.password,
+        "firstName":req.body.firstName,
+        "lastName": req.body.lastName
+     };
+     connection.query ('INSERT INTO users SET ?',users,function(error,results,fields){
+        if(error)
+        {
+            console.log(error);
+            res.redirect("/register",{"code":400,
+                                        "failed":"error occured"});
+        
+         
+        }
+        else {
+            loggedInUser = users.firstName+" "+users.lastName;
+                loggedInId = users.ID;
+            isLoggedin = true;
+            res.render("secret.ejs",{loginStatus: isLoggedin,user:users.firstName+" "+users.lastName});
+          
+    
+         }
     });
 });
 

@@ -43,7 +43,18 @@
         <h1>BAU iTools</h1>
         <p><a class="btn btn-secondary" href="/login" role="button">Get Started!</a></p>
       </div>
-
+      <div class="container">
+        <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>
 
       <ul class="slideshow">
         <li></li>

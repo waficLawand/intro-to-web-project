@@ -1,7 +1,7 @@
 body{
-  margin-top: 60px;
+
   height: 100%;
-  
+ margin-top: 60px
   
 }
 
@@ -96,7 +96,10 @@ footer, footer a {
     transform: scale(1.2);
   }
 }
-
+.row
+{
+  margin-right: 0px;
+}
 /* Older browser support - .no-cssanimations class added by modernizr */
 .no-cssanimations .slideshow li {
 	opacity: 1;
@@ -141,9 +144,14 @@ footer, footer a {
 
 .register{
   background: -webkit-linear-gradient(left, #40356F, #69E9F5);
-  margin-top: 3%;
-  padding: 3%;
+ 
+  padding-left: 3%;
+  padding-right: 3%;
+  
+  padding-top: 25px;
  height: 100%; 
+ 
+
 }
 .register-left{
   text-align: center;
@@ -453,4 +461,33 @@ input.invalid {
 }
 #h1calc{
   margin-bottom: 5%;
+}
+
+#success,#error {
+  -webkit-animation: seconds 1.0s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 5s;
+  animation: seconds 1.0s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+  
+margin-left: 200px;
+}
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px; 
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px; 
+  }
 }

@@ -4,6 +4,7 @@ var express = require("express"),
     mySql   = require("mysql"),
     bodyParser = require("body-parser"),
     session = require("express-session"),
+    flash = require("connect-flash");
     LocalStrategy   = require('passport-local').Strategy,
     passport = require("passport");
     var loggedInUser,loggedInId;
@@ -12,7 +13,8 @@ var express = require("express"),
     app.use(bodyParser.urlencoded({extended:true}));
 // Securing assets and stylesheets in public directory 
     app.use(express.static(__dirname+"/public"));
-// Adding an express session with a certain age    
+// Adding an express session with a certain age  
+app.use(flash());  
     app.use(session({
         secret:"waficIsTheBestDev",
         resave: false,
@@ -20,7 +22,12 @@ var express = require("express"),
         cookie: {maxAge:60000}
 
     }));
-
+    app.use(function(req,res,next){
+        res.locals.error = req.flash("error");
+        res.locals.success = req.flash("success");
+        next();
+    });
+    
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -46,44 +53,12 @@ connection.getConnection(function(err,connection){
 
 
 app.get("/",function(req,res){
-
-    res.render("landing.ejs",{loginStatus:isLoggedin,
-                                user:loggedInUser});
-});
-
-/*app.post("/register",function(req,res){
-    var users = 
-    {
-        "id":req.body.id,
-        "email":req.body.email,
-        "password":req.body.password,
-        "firstName":req.body.firstName,
-        "lastName": req.body.lastName,
-    };
-
-    connection.query ('INSERT INTO users SET ?',users,function(error,results,fields){
-        if(error)
-        {
-            console.log(error);
-            res.redirect("/register",{"code":400,
-                                        "failed":"error occured",
-                                    loginStatus:isLoggedin});
-        
-         
-        }
-        else {
-            console.log(fields);
-            isLoggedin =true;
-            
-            res.render("secret.ejs",{"code":200,
-                                        "success":"user registered successfully!",
-                                    loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName});
-            console.log('The solution is: ', results);
     
-
-        }
-    });
-});*/
+    
+    res.render("landing.ejs",{loginStatus:isLoggedin,
+                                user:loggedInUser,success:true});
+                                
+});
 
 
 
@@ -101,7 +76,7 @@ app.post("/register",function(req,res){
         {
             console.log(error);
             res.redirect("/register",{"code":400,
-                                        "failed":"error occured"});
+                                        error:"Error occured while tryin to register, please try again!"});
         
          
         }
@@ -109,7 +84,7 @@ app.post("/register",function(req,res){
             loggedInUser = users.firstName+" "+users.lastName;
                 loggedInId = users.ID;
             isLoggedin = true;
-            res.render("secret.ejs",{loginStatus: isLoggedin,user:users.firstName+" "+users.lastName});
+            res.render("secret.ejs",{loginStatus: isLoggedin,user:users.firstName+" "+users.lastName,success:"Welcome "+ loggedInUser+"!"});
           
     
          }
@@ -138,14 +113,13 @@ app.post("/login",function(req,res){
                 loggedInUser = results[0].firstName+" "+results[0].lastName;
                 loggedInId = results[0].id;
                 
-                res.render("secret.ejs",{"code":200, loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName});
+                res.render("secret.ejs",{"code":200, loginStatus:isLoggedin,user:results[0].firstName+" "+results[0].lastName,success:"Logged In Successfully!"});
             }
             else 
             {
-                res.send({
-                    "code":204,
-                    "success": "id and password do not match"
-                });
+                isLoggedin = false;
+                res.render("signup.ejs",{ loginStatus:isLoggedin,error: "ID and password do not match"    });
+            
         }
         
        
@@ -153,21 +127,20 @@ app.post("/login",function(req,res){
 
         else
         {
-            res.send({
-                "code":204,
-                "success":"id does not exits"
-                  });
+            isLoggedin = false;
+            res.render("signup.ejs",{ loginStatus:isLoggedin,error: "ID does not exist" });
         }
         
     });
 
-    console.log("hello! "+loggedInUser);
+
 });
 
 
 
 app.get("/login",function(req,res){
-    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"login"});
+    
+    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"login",success:"Welcome to BAU iTools!"});
 });
 
 app.get("/petitions",function(req,res){

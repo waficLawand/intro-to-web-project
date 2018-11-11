@@ -1,65 +1,15 @@
 <%include partials/header%>
-
-	 <!-- <form class="form-signin" action="/register" method="POST">
-      <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal"><b>Create an Account</b></h1>
-      <label for="FirstName" class="sr-only">First Name</label>
-      <input type="ID" id="FirstName" name="firstName" class="form-control" placeholder="First Name" required autofocus>
-      <label for="LastName" class="sr-only">Last Name</label>
-      <input type="ID" id="LastName" name="lastName" class="form-control" placeholder="Last Name" required autofocus>
-      <label for="inputID" class="sr-only">ID</label>
-      <input type="ID" id="inputID" name="id" class="form-control" placeholder="ID" required autofocus>
-      <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-
-     <p><div class="dropdown">
-          <button class="dropbtn">Faculty</button>
-          <div class="dropdown-content">
-            <a href="#">Engineering</a>
-            <a href="#">Sciences</a>
-          </div>
-      </div>
-      
-      <div class="dropdown">
-          <button class="dropbtn">Major</button>
-          <div class="dropdown-content">
-            <a href="#">Computer Engineering</a>
-            <a href="#">Physics</a>
-          </div>
-      </div>
-
-      <div class="dropdown">
-          <button class="dropbtn">Year</button>
-          <div class="dropdown-content">
-              <a href="#">First</a>
-            <a href="#">Second</a>
-            <a href="#">Third</a>
-            <a href="#">Fourth</a>
-            <a href="#">Fifth</a>
-          </div>
-      </div> 
-
-      <div class="dropdown">
-          <button class="dropbtn">Avatar</button>
-          <div class="dropdown-content">
-              <a href="#"><img src="/assets/myAvatar.png"></a>
-            <a href="#"><img src="/assets/intersection.png"></a>
-          </div>
-      </div> 
-
-      
-    </p>
-      
-
-      <p>By submitting this form you agree to our <a class="signup">Terms of Service</a></p>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign Up</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
-      <p>Already have an account? <a class="signup">Sign in</a></p>
-    </form>-->
-
     <div class="register">
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" id="error" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" id="success" role="alert">
+                    <%= success %>
+                </div>
+                <% } %>
         <div class="row">
             <div class="col-md-3 register-left">
                 <img src="/assets/no_name1.png" alt="logo"/>
@@ -132,7 +82,7 @@
                         <div class="row register-form">
                           
                             <div class="container">
-                                <div class="row">
+                                <div class="row row-register">
                                    
                                     <div style=" width:50%;margin: 25px auto;">
                                         <form action="/login" method="POST" class="form-signin">
@@ -159,6 +109,8 @@
                     </div>
                 </div>
             </div>
+           
+           
         </div>
 
     </div>

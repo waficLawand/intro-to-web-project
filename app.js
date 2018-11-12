@@ -307,7 +307,10 @@ app.get("/tuitionCalculator",function(req,res)
         res.render("tuitionCalc.ejs",{loginStatus:isLoggedin});
     });
 
-
+app.get("/scheduleMaker",function(req,res)
+{
+    res.render("scheduleMaker.ejs");
+});
     app.listen(3000,function(){
         console.log("Servers are running!");
     });

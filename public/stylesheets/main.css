@@ -100,6 +100,9 @@ footer, footer a {
 {
   margin-right: 0px;
 }
+.row.row-register{
+  margin-top:0px;
+}
 /* Older browser support - .no-cssanimations class added by modernizr */
 .no-cssanimations .slideshow li {
 	opacity: 1;
@@ -131,6 +134,7 @@ footer, footer a {
     margin-left: 20%;
     margin-right: 20%;
     text-align: left;
+    
 }
 .card-text
 {
@@ -144,14 +148,10 @@ footer, footer a {
 
 .register{
   background: -webkit-linear-gradient(left, #40356F, #69E9F5);
- 
   padding-left: 3%;
   padding-right: 3%;
-  
   padding-top: 25px;
- height: 100%; 
- 
-
+  height: 100%; 
 }
 .register-left{
   text-align: center;
@@ -364,6 +364,7 @@ footer, footer a {
  #newPetition{
    background-color: #40356F;
    border-color: #40356f;
+   margin-top:25px;
  }
  .btn-outline-primary:hover{
    background-color: #40356f;
@@ -571,4 +572,15 @@ input::-webkit-inner-spin-button {
 input:disabled{
   background-color:white;
 }
-     
+#show{     
+ background :rgba(105,233,245, 0.2);
+
+ }
+
+ .card.my-4{
+   border-radius: 15px;
+   box-shadow: 0 0 25px rgba(0,0,0,.04);
+ }
+ .card-header{
+   background: rgba(0,0,0,0);
+ }

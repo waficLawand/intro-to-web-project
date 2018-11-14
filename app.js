@@ -7,7 +7,7 @@ var express = require("express"),
     flash = require("connect-flash");
     LocalStrategy   = require('passport-local').Strategy,
     passport = require("passport");
-    var loggedInUser,loggedInId;
+    var loggedInUser ,loggedInId;
     var isLoggedin = false;
     var signedUser;
     app.use(bodyParser.urlencoded({extended:true}));
@@ -298,8 +298,19 @@ app.get("/petitions/show/:id",function(req,res)
 });
 app.get("/secret", function(req,res)
 {
-    res.render("secret.ejs",{loginStatus:isLoggedin,
-        user:loggedInUser,userId:loggedInId});
+    if(isLoggedin)
+    {
+        res.render("secret.ejs",{loginStatus:isLoggedin,
+            user:loggedInUser,userId:loggedInId});
+    }
+    else
+    {
+        console.log("NOT LOGGED IN!");
+       
+        res.redirect("/login");
+    }
+    
+    
 });
 
 app.get("/tuitionCalculator",function(req,res)
@@ -308,8 +319,10 @@ app.get("/tuitionCalculator",function(req,res)
     });
 
 app.get("/scheduleMaker",function(req,res)
+
 {
-    res.render("scheduleMaker.ejs");
+    isLoggedin = false;
+    res.render("scheduleMaker.ejs",{loginStatus:isLoggedin});
 });
     app.listen(3000,function(){
         console.log("Servers are running!");

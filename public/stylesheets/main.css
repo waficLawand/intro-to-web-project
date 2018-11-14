@@ -13,7 +13,7 @@ html{
 }
 /* footer */
 footer{
-  background: url("/assets/footer1.png") no-repeat 400px center;
+  background: url("/assets/footer1.png") no-repeat 400px;
   height:250px;  
   font-size: 18px;
   bottom: 0px;
@@ -449,20 +449,25 @@ input.invalid {
 }
 
 /* buttons */
-#prevBtn, #nextBtn{
+#prevBtn, #nextBtn,#findSchedules{
   color: white;
   background: #40356F;
   border-color:#40356f;
   border-radius: 1.5rem;
   margin-top: 3%;
   border: none;
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
 }
 #h1calc{
   margin-bottom: 5%;
 }
-
+#member
+{
+  width: 45%;
+  height: 30px;
+  margin-bottom: 10px;
+}
 #success,#error {
   -webkit-animation: seconds 1.0s forwards;
   -webkit-animation-iteration-count: 1;
@@ -491,3 +496,79 @@ margin-left: 200px;
     left: -9999px; 
   }
 }
+
+.qty #count {
+  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px
+  ;min-width: 35px;
+  text-align: center;
+}
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+ 
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial,sans-serif;
+  text-align: center;
+  
+  }
+  .qty
+  {
+   margin-bottom: 10px;
+  }
+  .text-muted
+  {
+    margin-bottom: 0;
+  }
+ #numberOfCourses
+ {  
+   margin-top: 10px;
+ }
+  .addSubtract
+  {
+    background: #40356F; 
+  }
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial,sans-serif;
+  text-align: center;
+  
+  background-clip: padding-box;
+}
+#numberOfCourses {
+  text-align: center;
+}
+
+
+.plus,.minus{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+#count{  
+  border: 0;
+  width: 2%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:disabled{
+  background-color:white;
+}
+     

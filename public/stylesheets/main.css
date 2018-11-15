@@ -448,6 +448,16 @@ input.invalid {
 .step.finish {
   background-color: #40356f;
 }
+input[type=checkbox]{
+width: 5%;
+}
+#insur1{
+  padding-top:20px;
+}
+#regForm select, #regForm input{
+  padding:5px;
+  border-radius: 5px;
+}
 
 /* buttons */
 #prevBtn, #nextBtn,#findSchedules{

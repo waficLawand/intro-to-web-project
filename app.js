@@ -315,7 +315,7 @@ app.get("/secret", function(req,res)
 
 app.get("/tuitionCalculator",function(req,res)
     {
-        res.render("tuitionCalc.ejs",{loginStatus:isLoggedin});
+        res.render("tuitionCalc.ejs",{loginStatus:isLoggedin,user:loggedInUser,userId:loggedInId});
     });
 
 app.get("/scheduleMaker",function(req,res)

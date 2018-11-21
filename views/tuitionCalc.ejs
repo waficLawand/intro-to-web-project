@@ -8,7 +8,7 @@
  </div>
 <!-- second tab -->
 <div class="tab"><p>Level of Studies:
-<select oninput="this.className = ''" >
+<select oninput="this.className = ''" id="gradUnder">
     <option value="grad">Graduate Studies</option>
     <option value="undergrad">Undergraduate Studies</option>
 </select></p>Status:
@@ -25,13 +25,13 @@
 </div>
 
 <div class="tab">Transportation:
-    <select oninput="this.className = ''">
+    <select oninput="this.className = ''" id="transport">
       <option value="notrans">No Transportation</option>
       <option value="one">One Semester</option>
       <option value="two">Two Semesters</option>
       <option value="full">Full Year (including Summer Semester)</option>
     </select>
-    <p id="insur1"><input type="checkbox" name="gg" id ="insur" checked><label for="insur">National Social Security Health Insurance</label></p>
+    <p id="insur1"><input type="checkbox" name="insur" id="insur" checked><label for="insur">National Social Security Health Insurance</label></p>
 </div>
 
 <div style="overflow:auto;">
@@ -57,7 +57,7 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
-  // This function will display the specified tab of the form ...
+  // This function will display the specified tab of the form 
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
   // ... and fix the Previous/Next buttons:
@@ -71,28 +71,78 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Calculate";
     button.id ="calculate";
     button.addEventListener("click",function(){
-
-      var uniCred = 240000, faUnder =  480000, faGrad = 750000;
-      var insurance = 202500;
-      var one = 360000, two = 648000, year = 810000;
-
-      var uniCourses,facultyCourses,transp;
       
+      //Calculation
+    
+
+      var uniCourses,facultyCourses,transp, health;
       var typeOfStudent =document.getElementById("newOld").value;
       var uniCredits = document.getElementById("uni").value;
       var facultyCredits = document.getElementById("fac").value;
-
-
-      if(typeOfStudent == "new")
+      var level = document.getElementById("gradUnder").value;
+      var modeOfTransp = document.getElementById("transport").value;
+      
+      if(typeOfStudent === "new")
       {
         uniCourses= 250000*parseInt(uniCredits);
-        facultyCourses = 495000*parseInt(facultyCredits);
+        if(level ==="undergrad"){
+        facultyCourses = 495000*parseInt(facultyCredits);}
+        else if(level ==="grad"){
+          facultyCourses= 750000*parseInt(facultyCredits);
+        }
+      } else if(typeOfStudent==="old"){
+        uniCourses= 240000*parseInt(uniCredits);
+        if(level ==="undergrad"){
+        facultyCourses = 480000*parseInt(facultyCredits);}
+        else if(level ==="grad"){
+          facultyCourses= 750000*parseInt(facultyCredits);
+        }
+      }
+       if(modeOfTransp==="no trans"){
+       transp=0;
+      } else if(modeOfTransp==="one"){
+       transp=360000;
+      } else if(modeOfTransp==="two"){
+        transp=648000;
+      } else{
+       transp=810000;
+      }
+      if(insur.checked){
+      health = 203500;
+      }else {
+      health = 0;
+      }
+    var total= facultyCourses+uniCourses+transp+health;
+    //Display Results
+          var body = document.getElementsByTagName("form")[0];
+
+      // creates a <table> element and a <tbody> element
+      var tbl = document.createElement("table");
+      var tblBody = document.createElement("tbody");
+
+      // creating all cells
+      for (var i = 0; i < 2; i++) {
+        // creates a table row
+        var row = document.createElement("tr");
+
+        for (var j = 0; j < 2; j++) {
+
+          var cell = document.createElement("td");
+          var cellText = document.createTextNode("cell in row "+i+", column "+j);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
       }
 
-    
-
-
-
+      // put the <tbody> in the <table>
+      tbl.appendChild(tblBody);
+      // appends <table> into <body>
+      body.appendChild(tbl);
+      // sets the border attribute of tbl to 2;
+      tbl.setAttribute("border", "2");
     });
 
     
@@ -154,14 +204,6 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
-// Calculation
-function Calc(){
-var uniCred = 240000, faUnder =  480000, faGrad = 750000;
-var insurance = 202500;
-var one = 360000, two = 648000, year = 810000;
 
-
-
-}
   </script>
   <%include partials/footer%>

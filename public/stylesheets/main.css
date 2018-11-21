@@ -41,6 +41,9 @@ footer, footer a, footer a:hover {
   width: 100%;
   z-index: 0;
 }
+#title{
+  text-shadow: 1px 1px 1px #40356F;
+}
 
 .slideshow li { 
   animation: imageAnimation 50s linear 2.5s infinite; 

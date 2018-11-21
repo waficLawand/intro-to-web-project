@@ -24,8 +24,9 @@ footer div{
   padding-top: 40px;
   padding-left: 40px;
 }
-footer, footer a {
+footer, footer a, footer a:hover {
   color: #40356F ;
+
 }
 
 /* background slide show for landing page */
@@ -72,7 +73,7 @@ footer, footer a {
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(/assets/maybe1.jpg);
+  background-image: url(/assets/peeps.jpg);
   animation-delay: 40s; 
 }
 
@@ -177,8 +178,7 @@ footer, footer a {
 }
 .register-left img{
   margin-top: 15%;
-  margin-bottom: 5%;
-  width: 45%;
+  width: 80%;
   -webkit-animation: mover 2s infinite  alternate;
   animation: mover 1s infinite  alternate;
 }
@@ -188,7 +188,7 @@ footer, footer a {
 }
 @keyframes mover {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-30px); }
+  100% { transform: translateY(-40px); }
 }
 .register-left p{
   font-weight: lighter;
@@ -400,13 +400,14 @@ footer, footer a {
 /* Tuition Calculator */
 /* Style the form */
 #regForm {
-  background-color: #ffffff;
   margin: 100px auto;
   padding: 40px;
   width: 70%;
   min-width: 300px;
   height: 100%;
+  color:#40356F;
 }
+
 
 /* Style the input fields */
 input {
@@ -472,6 +473,7 @@ width: 5%;
 }
 #h1calc{
   margin-bottom: 5%;
+  color:#40356f;
 }
 #member
 {

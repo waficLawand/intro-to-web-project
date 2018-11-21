@@ -4,7 +4,7 @@
 <!-- first tab -->
 <div class="tab">Number of Credits:<br><br>
     <p><input type ="number" id="uni" placeholder="University Credits" oninput="this.className = ''" ></p>
-    <p><input type="number" placeholder="Faculty Credits" oninput="this.className = ''"></p>
+    <p><input type="number" id="fac" placeholder="Faculty Credits" oninput="this.className = ''"></p>
  </div>
 <!-- second tab -->
 <div class="tab"><p>Level of Studies:
@@ -12,7 +12,7 @@
     <option value="grad">Graduate Studies</option>
     <option value="undergrad">Undergraduate Studies</option>
 </select></p>Status:
-<select>
+<select id="newOld">
   <option value="new">New Student (after 2018-2019)</option>
   <option value="old">Old Student (before 2018-2019)</option>
 </select>
@@ -67,7 +67,35 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
+    var button =document.getElementById("nextBtn");
     document.getElementById("nextBtn").innerHTML = "Calculate";
+    button.id ="calculate";
+    button.addEventListener("click",function(){
+
+      var uniCred = 240000, faUnder =  480000, faGrad = 750000;
+      var insurance = 202500;
+      var one = 360000, two = 648000, year = 810000;
+
+      var uniCourses,facultyCourses,transp;
+      
+      var typeOfStudent =document.getElementById("newOld").value;
+      var uniCredits = document.getElementById("uni").value;
+      var facultyCredits = document.getElementById("fac").value;
+
+
+      if(typeOfStudent == "new")
+      {
+        uniCourses= 250000*parseInt(uniCredits);
+        facultyCourses = 495000*parseInt(facultyCredits);
+      }
+
+    
+
+
+
+    });
+
+    
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
@@ -131,6 +159,7 @@ function Calc(){
 var uniCred = 240000, faUnder =  480000, faGrad = 750000;
 var insurance = 202500;
 var one = 360000, two = 648000, year = 810000;
+
 
 
 }

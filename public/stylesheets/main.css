@@ -582,10 +582,7 @@ input::-webkit-inner-spin-button {
 input:disabled{
   background-color:white;
 }
-#show{     
- background :rgba(105,233,245, 0.2);
 
- }
 
  .card.my-4{
    border-radius: 15px;
@@ -594,3 +591,15 @@ input:disabled{
  .card-header{
    background: rgba(0,0,0,0);
  }
+
+ #navbarPet{
+  background: #40356f !important;
+  color: #fff !important;
+
+}
+#footerShow
+{
+  background: #40356F;
+  color: white; 
+
+}

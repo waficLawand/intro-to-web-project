@@ -257,18 +257,17 @@ document.getElementById("nextTab").appendChild(para);
           </div>
 
         </section>
-    
+    <div id= "nbOfScheds">
+      <p id="navigatingThroughScheds"></p>
+
+    </div>
 
 
   
-    <div class="container-fluid px-4">
-        <div class="row">
-          <div class="col-xs-12">
-           
+    
             <div id="calendar"></div>
             
-          </div>
-        </div>
+         
       </div>
    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
@@ -349,20 +348,6 @@ var lala=[];
     crn[i]={"number":crnNumber,"from":from,"to":to,"day":crnDay};
     courseOffering.push({"name":name,"type":type,"CRN":crn[i]});
   }
- // console.log(courseOffering[0].CRN.number);
-  //var userInput6="COMP210";
-  //var userInput1="COMP211";
- //var userInput2="COMP226";
-  //var userInput3="COME221";
-  //var userInput4="MCHE213";
-  //var userInput1="COMP211";
- //var userInput5="COMP231";
-  //var userInput0="POWE212";
-  //var userInput0="POWE212";;
-  //var userInput1="BIOL002";
-// var userInput3="MATH281";
-//var userInput0 = "CVLE213";
-
 if(number == 2)
 {
     twoCourses(courseOffering,document.getElementById("course1").value,document.getElementById("course2").value);
@@ -388,106 +373,6 @@ if(number == 2)
 {
     nineCourses(courseOffering,document.getElementById("course1").value,document.getElementById("course2").value,document.getElementById("course3").value,document.getElementById("course4").value,document.getElementById("course5").value,document.getElementById("course6").value,document.getElementById("course7").value,document.getElementById("course8").value,document.getElementById("course9").value);
 } 
-
-// var userInput1 = "CVLE213";
- //var userInput2 = "MATH283";
- //var userInput3 = "CHEM207";
- //var userInput4 = "CVLE263";
- //var userInput5 = "CVLE261";
- //var userInput6 = "CVLE231";
- // var userInput7 = "CMPS002
-  
-
-  /*for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput6)
-    {
-        userOffering.push(courseOffering[i]);
-     
-    }
-  }*/
-
-/*for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput0)
-    {
-        userOffering.push(courseOffering[i]);
-        subject2.push(courseOffering[i]);
-    }
-  }
-*/
-/*for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput1)
-    {
-        userOffering.push(courseOffering[i]);
-    
-    }
-  }
-
-  for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput2)
-    {
-        userOffering.push(courseOffering[i]);
-    }
-    
-  }
-  for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput3)
-    {
-        userOffering.push(courseOffering[i]);
-     
-    }
-    
-  }
-  for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput4)
-    {
-        userOffering.push(courseOffering[i]);
-             
-    }
-    
-  }
-  for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput5)
-    {
-        userOffering.push(courseOffering[i]);
-    
-    }
-    
-  }*/
- /* for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput7)
-    {
-        userOffering.push(courseOffering[i]);
-        subject2.push(courseOffering[i]);
-    }
-  }
-  /*for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput5)
-    {
-        userOffering.push(courseOffering[i]);
-        subject4.push(courseOffering[i]);
-    }
-    
-  }*/
-  /*for(var i = 0; i<courseOffering.length;i++)
-  {
-    if(courseOffering[i].name == userInput5)
-    {
-        userOffering.push(courseOffering[i]);
-        subject5.push(courseOffering[i]);
-    }
-    
-  }*/
- 
-
 
 var result = false;
 var randomNumber;
@@ -693,7 +578,17 @@ if(allSchedules.length>0)
   next.id = "next";
     var text = document.createTextNode("Next");
     next.appendChild(text);
-  document.body.appendChild(next);
+    var previous =document.createElement('button');  
+  previous.id = "previous";
+    var text = document.createTextNode("Previous");
+    previous.appendChild(text);
+    previous.disabled = true;
+
+  document.getElementById("nbOfScheds").appendChild(previous);
+  document.getElementById("nbOfScheds").appendChild(next);
+
+
+  document.getElementById("navigatingThroughScheds").innerHTML=(schedCounter+1)+"/"+allSchedules.length+"";
 }
 
   for(var j =0;j<allSchedules[0].length;j++)
@@ -961,14 +856,18 @@ $(document).ready(function(){
 });
 document.body.appendChild(div);
 
-
-
+console.log(schedCounter);
+ 
 
 $("#next").on("click",function(){
   console.log(schedCounter);
 
+if(schedCounter>=0)
+{
+  document.getElementById("previous").disabled = false;
+}
 console.log(allSchedules.length-1);
-if(schedCounter < (allSchedules.length)-1)
+if(schedCounter+1 < (allSchedules.length))
 {$("#calendar").remove();}
 
 div = document.createElement("div");
@@ -984,6 +883,7 @@ monday = [];
  friday=[];
 
   schedCounter++;
+  document.getElementById("navigatingThroughScheds").innerHTML=(schedCounter+1)+"/"+allSchedules.length+"";
 
 if(schedCounter<(allSchedules.length))
 {
@@ -1240,18 +1140,203 @@ $(document).ready(function(){
         console.log(elem);
         console.log(evt);
       });
+      
 });
 document.body.appendChild(div);
-      
-
-
-} else 
+}
+ else 
 {
   $(this).prop("disabled",true);
 }
 });
 
 
+$("#previous").on("click",function(){
+  
+
+
+
+console.log(allSchedules.length-1);
+if(schedCounter > (allSchedules.length)-1)
+{$("#calendar").remove();}
+
+div = document.createElement("div");
+div.id="calendar";
+
+  events=[];
+ initialEvent ='';
+events =[];
+monday = [];
+ tuesday =[];
+ wednesday =[];
+ thursday =[];
+ friday=[];
+
+  schedCounter--;
+  document.getElementById("navigatingThroughScheds").innerHTML=(schedCounter+1)+"/"+allSchedules.length+"";
+
+if(schedCounter>=0)
+{
+
+document.getElementById("next").disabled = false;
+for(var j =0;j<allSchedules[schedCounter].length;j++)
+  {
+    if(allSchedules[schedCounter][j].CRN.day == "Monday")
+    {
+      monday.push(allSchedules[schedCounter][j]);
+    } else if(allSchedules[schedCounter][j].CRN.day == "Tuesday")
+    {
+      tuesday.push(allSchedules[schedCounter][j]);
+    } else if(allSchedules[schedCounter][j].CRN.day == "Wednesday")
+    {
+      wednesday.push(allSchedules[schedCounter][j]);
+    } else if(allSchedules[schedCounter][j].CRN.day == "Thursday")
+    {
+      thursday.push(allSchedules[schedCounter][j]);
+    } else if(allSchedules[schedCounter][j].CRN.day == "Friday")
+    {
+      friday.push(allSchedules[schedCounter][j]);
+    }
+  }
+
+   timeSort(monday);
+timeSort(tuesday);
+timeSort(wednesday);
+timeSort(thursday);
+timeSort(friday);
+eleminateRepitition(monday);
+eleminateRepitition(tuesday);
+eleminateRepitition(wednesday);
+eleminateRepitition(thursday);
+eleminateRepitition(friday);
+console.log(monday);
+console.log(tuesday);
+console.log(wednesday);
+console.log(thursday);
+console.log(friday);
+
+
+
+
+ 
+
+
+
+  
+for(var i=0;i<monday.length;i++)
+{
+       moment.locale('en');
+      var now = moment();
+  var fromHours,fromMinutes,toHours,toMinutes;
+  fromHours= parseInt(monday[i].CRN.from.slice(0,2));
+  fromMinutes=parseInt(monday[i].CRN.from.slice(2,4));
+  toHours = parseInt(monday[i].CRN.to.slice(0,2));
+  toMinutes=parseInt(monday[i].CRN.to.slice(2,4));
+
+  initialEvent={ start: now.startOf('week').add(1, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
+          end: now.startOf('week').add(1, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
+          title: monday[i].name,
+          content: monday[i].type,
+          category:'Personnal'};
+          events.push(initialEvent);
+
+  console.log(fromMinutes);
+  console.log(to);
+
+}
+
+for(var i=0;i<tuesday.length;i++)
+{
+       moment.locale('en');
+      var now = moment();
+  var fromHours,fromMinutes,toHours,toMinutes;
+  fromHours= parseInt(tuesday[i].CRN.from.slice(0,2));
+  fromMinutes=parseInt(tuesday[i].CRN.from.slice(2,4));
+  toHours = parseInt(tuesday[i].CRN.to.slice(0,2));
+  toMinutes=parseInt(tuesday[i].CRN.to.slice(2,4));
+
+  initialEvent={ start: now.startOf('week').add(2, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
+          end: now.startOf('week').add(2, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
+          title: tuesday[i].name,
+          content: tuesday[i].type,
+          category:'Professionnal'};
+          events.push(initialEvent);
+
+  console.log(fromMinutes);
+  console.log(to);
+
+}
+
+for(var i=0;i<wednesday.length;i++)
+{
+       moment.locale('en');
+      var now = moment();
+  var fromHours,fromMinutes,toHours,toMinutes;
+  fromHours= parseInt(wednesday[i].CRN.from.slice(0,2));
+  fromMinutes=parseInt(wednesday[i].CRN.from.slice(2,4));
+  toHours = parseInt(wednesday[i].CRN.to.slice(0,2));
+  toMinutes=parseInt(wednesday[i].CRN.to.slice(2,4));
+
+  initialEvent={ start: now.startOf('week').add(3, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
+          end: now.startOf('week').add(3, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
+          title: wednesday[i].name,
+          content: wednesday[i].type,
+          category:'Arrobe'};
+          events.push(initialEvent);
+
+  console.log(fromMinutes);
+  console.log(to);
+
+}
+
+for(var i=0;i<thursday.length;i++)
+{
+       moment.locale('en');
+      var now = moment();
+  var fromHours,fromMinutes,toHours,toMinutes;
+  fromHours= parseInt(thursday[i].CRN.from.slice(0,2));
+  fromMinutes=parseInt(thursday[i].CRN.from.slice(2,4));
+  toHours = parseInt(thursday[i].CRN.to.slice(0,2));
+  toMinutes=parseInt(thursday[i].CRN.to.slice(2,4));
+
+  initialEvent={ start: now.startOf('week').add(4, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
+          end: now.startOf('week').add(4, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
+          title: thursday[i].name,
+          content: thursday[i].type,
+          category:'Private'};
+          events.push(initialEvent);
+
+  console.log(fromMinutes);
+  console.log(to);
+
+}
+
+for(var i=0;i<friday.length;i++)
+{
+       moment.locale('en');
+      var now = moment();
+  var fromHours,fromMinutes,toHours,toMinutes;
+  fromHours= parseInt(friday[i].CRN.from.slice(0,2));
+  fromMinutes=parseInt(friday[i].CRN.from.slice(2,4));
+  toHours = parseInt(friday[i].CRN.to.slice(0,2));
+  toMinutes=parseInt(friday[i].CRN.to.slice(2,4));
+
+  initialEvent={ start: now.startOf('week').add(5, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
+          end: now.startOf('week').add(5, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
+          title: friday[i].name,
+          content: friday[i].type,
+          category:'Anything else'};
+          events.push(initialEvent);
+
+  console.log(fromMinutes);
+  console.log(to);
+
+}
+
+
+
+
+console.log(events);
 
 
 
@@ -1260,14 +1345,109 @@ document.body.appendChild(div);
 
 
 
+$(document).ready(function(){
+      moment.locale('en');
+      var now = moment();
+      console.log(events);
+      var daynotes = [
+        {
+          time: now.startOf('week').add(15, 'h').add(30, 'm').format('X'),
+          title: 'Leo\'s holiday',
+          content: 'yo',
+          category: 'holiday'
+        }
+      ];
+
+      /**
+       * Init the calendar
+       */
+      var calendar = $('#calendar').Calendar({
+        locale: 'en',
+        weekday: {
+    timeline: {
+      fromHour: 8, // start hour
+      toHour: 18, // end hour
+      intervalMinutes: 30,
+      format: 'HH:mm',
+      heightPx: 50,
+      autoResize: true
+    },
+    dayline: {
+      weekdays: [1, 2, 3, 4, 5, 6],
+      format: 'dddd DD/MM',
+      heightPx: 31,
+      month: {
+        format: 'MMMM YYYY',
+        heightPx: 30,
+        weekFormat: 'w'
+      }
+    }
+  },
+      
+        events: events,
+        daynotes: daynotes
+      }).init();
+
+      /**
+       * Listening for events
+       */
+
+      $('#calendar').on('Calendar.init', function(event, instance, before, current, after){
+        console.log('event : Calendar.init');
+        console.log(instance);
+        console.log(before);
+        console.log(current);
+        console.log(after);
+      });
+      $('#calendar').on('Calendar.daynote-mouseenter', function(event, instance, elem){
+        console.log('event : Calendar.daynote-mouseenter');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.daynote-mouseleave', function(event, instance, elem){
+        console.log('event : Calendar.daynote-mouseleave');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.event-mouseenter', function(event, instance, elem){
+        console.log('event : Calendar.event-mouseenter');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.event-mouseleave', function(event, instance, elem){
+        console.log('event : Calendar.event-mouseleave');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.daynote-click', function(event, instance, elem, evt){
+        console.log('event : Calendar.daynote-click');
+        console.log(instance);
+        console.log(elem);
+        console.log(evt);
+      });
+      $('#calendar').on('Calendar.event-click', function(event, instance, elem, evt){
+        console.log('event : Calendar.event-click');
+        console.log(instance);
+        console.log(elem);
+        console.log(evt);
+      });
+});
 
 
+}
+
+else
+{
+  $(this).prop("disabled",true);
+}
+
+});
 
 
 //div.innerHTML=" <table border='1' width='100%'> <tr> <td>Time</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thrsday</td><td>Friday</td></tr><tr id='lala'> <td>8:00 a.m - 8:30 a.m</td>"+eight+"</tr><tr> <td>8:30 a.m - 9:00 a.m</td>"+eightThirty+"</tr><tr><td>9:00 a.m - 9:30 a.m</td>"+nine+"</tr><tr> <td>9:30 a.m - 10:00 a.m</td>"+nineThirty+"</tr><tr> <td>10:00 a.m - 10:30 a.m</td>"+ten+"</tr><tr> <td>10:30 a.m - 11:00 a.m</td>"+tenThirty+"</tr><tr> <td>11:00 a.m - 11:30 a.m</td>"+eleven+"</tr><tr><td>11:30 a.m - 12:00 a.m</td>"+elevenThirty+"</tr><tr><td>12:00 p.m - 12:30 p.m</td>"+twelve+"</tr><tr><td>12:30 p.m - 1:00 p.m</td>"+twelveThirty+"</tr><tr><td>1:00 p.m - 1:30 p.m</td>"+one+"</tr><tr><td>1:30 p.m - 2:00 p.m</td>"+oneThirty+"</tr><tr> <td>2:00 p.m - 2:30 p.m</td>"+two+"</tr><tr><td>2:30 p.m - 3:00 p.m</td></tr><tr> <td>3:00 p.m - 3:30 p.m</td></tr><tr> <td>3:30 p.m - 4:00 p.m</td></tr><tr> <td>4:00 p.m - 4:30 p.m</td></tr><tr> <td>4:30 p.m - 5:00 p.m</td></tr><tr> <td>5:00 p.m - 5:30 p.m</td></tr><tr> <td>5:30 p.m - 6:00 p.m</td></tr></table> ";
 //div.innerHTML="<table border ='1' width= '100%'>"+table+"</table>";
 
-
+ 
 
 
 //document.getElementById("lala").innerHTML="<h1>Hello</h1>";

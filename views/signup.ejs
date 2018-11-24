@@ -1,7 +1,11 @@
 <%include partials/header%>
     <div class="register" >
-          
-        <div class="row"style="margin-top:80px">
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+        <div class="row"style="margin-top:40px">
             <div class="col-md-3 register-left">
                 <img src="/assets/no_name1.png" alt="logo"/>
                 <h3>Welcome</h3>

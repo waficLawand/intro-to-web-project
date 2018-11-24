@@ -452,7 +452,7 @@ input.invalid {
 .step.finish {
   background-color: #40356f;
 }
-input[type=checkbox]{
+#regForm input[type="checkbox"]{
 width: 5%;
 }
 #insur1{
@@ -461,10 +461,12 @@ width: 5%;
 #regForm select, #regForm input{
   padding:5px;
   border-radius: 5px;
+  width:100%;
 }
 
+
 /* buttons */
-#prevBtn, #nextBtn,#findSchedules{
+#prevBtn, #nextBtn,#findSchedules, #calculate{
   color: white;
   background: #40356F;
   border-color:#40356f;
@@ -612,3 +614,52 @@ input:disabled{
 {
   width: 100%;
 }
+
+
+/* Show page */
+h2{
+  color: #40356F;
+}
+.container1{
+max-width: 1200px;
+}
+.firstcol{
+ padding: 20px;
+  height: 100%;
+  width:100%;
+  background-size: cover;
+  background-position: center;
+  transition:  0.4s ease;
+  background:  gray;
+  margin-bottom: 10px;
+}
+.firstcol:hover{
+transform: scale(1.3);
+}
+.secondcol{
+  padding:20px;
+  height: 100%;
+  width:100%;
+  background-size: cover;
+  background-position: center;
+  transition:  0.4s ease;
+  background:  gray;
+  margin-bottom: 10px;
+}
+.secondcol:hover{
+  transform: scale(1.3);
+  }
+.thirdcol{
+  padding:20px;
+  width:100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition:  0.4s ease;
+  background:  gray;
+}
+.thirdcol:hover{
+  transform: scale(1.3);
+  }
+
+

@@ -10,8 +10,8 @@
 <!-- second tab -->
 <div class="tab"><p>Level of Studies:
 <select oninput="this.className = ''" id="gradUnder">
-    <option value="grad">Graduate Studies</option>
     <option value="undergrad">Undergraduate Studies</option>
+    <option value="grad">Graduate Studies</option>
 </select></p>Status:
 <select id="newOld">
   <option value="new">New Student (after 2018-2019)</option>
@@ -24,7 +24,7 @@
       <option value="engineering">Engineering</option>
     </select>
 </div>
-
+<!-- fourth tab -->
 <div class="tab">Transportation:
     <select oninput="this.className = ''" id="transport">
       <option value="notrans">No Transportation</option>
@@ -34,6 +34,15 @@
     </select>
     <p id="insur1"><input type="checkbox" name="insur" id="insur" checked><label for="insur">National Social Security Health Insurance</label></p>
 </div>
+<!-- fifth tab -->
+<div class="tab">Tuition Fees:<br><br>
+    <p>University Courses:<input type ="text" id="unitui"  oninput="this.className = ''" ></p>
+    <p>Faculty Courses:<input type="text" id="factui"  oninput="this.className = ''"></p>
+    <p>Transportation:<input type="text" id="transptui" oninput="this.className = ''"></p>
+    <p>Health Insurance:<input type="text" id="insurancetui" placeholder="Faculty Credits" oninput="this.className = ''"></p>
+    <p>Total:<input type="text" id="total"  oninput="this.className = ''"></p>
+ </div>
+
 
 <div style="overflow:auto;">
     <div style="float:right;">
@@ -49,7 +58,7 @@
       <span class="step"></span>
     </div>
   </form>
-
+  <div id="result"></div>
 <script>
 // Form Manipulation
 
@@ -66,7 +75,7 @@ function showTab(n) {
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
-  if (n == (x.length - 1)) {
+  if (n == (x.length - 2)) {
     var button =document.getElementById("nextBtn");
     document.getElementById("nextBtn").innerHTML = "Calculate";
     button.id ="calculate";
@@ -113,40 +122,24 @@ function showTab(n) {
       health = 0;
       }
     var total= facultyCourses+uniCourses+transp+health;
-    //Display Results
-          var body = document.getElementsByTagName("form")[0];
-
-      // creates a <table> element and a <tbody> element
-      var tbl = document.createElement("table");
-      var tblBody = document.createElement("tbody");
-
-      // creating all cells
-      for (var i = 0; i < 2; i++) {
-        // creates a table row
-        var row = document.createElement("tr");
-
-        for (var j = 0; j < 2; j++) {
-
-          var cell = document.createElement("td");
-          var cellText = document.createTextNode("cell in row "+i+", column "+j);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-        }
-
-        // add the row to the end of the table body
-        tblBody.appendChild(row);
-      }
-
-      // put the <tbody> in the <table>
-      tbl.appendChild(tblBody);
-      // appends <table> into <body>
-      body.appendChild(tbl);
-      // sets the border attribute of tbl to 2;
-      tbl.setAttribute("border", "2");
+    document.getElementById("unitui").value=uniCourses+" L.L."; 
+    document.getElementById("factui").value=facultyCourses+" L.L."; 
+    document.getElementById("transptui").value=transp+" L.L."; 
+    document.getElementById("insurancetui").value=health+" L.L."; 
+    document.getElementById("total").value=total+" L.L."; 
     });
 
     
-  } else {
+  } else  if (n == (x.length - 1)) {
+    document.getElementById("calculate").innerHTML = "Finish";
+    var button1=document.getElementById("calculate");
+    button1.addEventListener("click", function(){
+    document.getElementById("regForm").submit();});
+    
+   }
+
+
+  else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   // ... and run a function that displays the correct step indicator:

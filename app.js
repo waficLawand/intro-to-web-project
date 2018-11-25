@@ -321,8 +321,15 @@ app.get("/tuitionCalculator",function(req,res)
 app.get("/scheduleMaker",function(req,res)
 
 {
-    isLoggedin = false;
-    res.render("scheduleMaker.ejs",{loginStatus:isLoggedin});
+    if(isLoggedin)
+    {
+        res.render("scheduleMaker.ejs",{loginStatus:isLoggedin,user:loggedInUser});
+    } else
+    {
+        console.log("NOT LOGGED IN!");
+        res.redirect("/login");
+    }
+    
 });
     app.listen(3000,function(){
         console.log("Servers are running!");

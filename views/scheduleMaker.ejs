@@ -650,7 +650,7 @@ for(var i=0;i<monday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(1, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(1, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: monday[i].name,
+          title: monday[i].name+'\n'+monday[i].CRN.number,
           content: monday[i].type,
           category:'Personnal'};
           events.push(initialEvent);
@@ -672,7 +672,7 @@ for(var i=0;i<tuesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(2, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(2, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: tuesday[i].name,
+          title: tuesday[i].name+'\n'+tuesday[i].CRN.number,
           content: tuesday[i].type,
           category:'Professionnal'};
           events.push(initialEvent);
@@ -694,7 +694,7 @@ for(var i=0;i<wednesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(3, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(3, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: wednesday[i].name,
+          title: wednesday[i].name+'\n'+wednesday[i].CRN.number,
           content: wednesday[i].type,
           category:'Arrobe'};
           events.push(initialEvent);
@@ -716,7 +716,7 @@ for(var i=0;i<thursday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(4, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(4, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: thursday[i].name,
+          title: thursday[i].name+'\n'+thursday[i].CRN.number,
           content: thursday[i].type,
           category:'Private'};
           events.push(initialEvent);
@@ -738,7 +738,7 @@ for(var i=0;i<friday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(5, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(5, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: friday[i].name,
+          title: friday[i].name+'\n'+friday[i].CRN.number,
           content: friday[i].type,
           category:'Anything else'};
           events.push(initialEvent);
@@ -945,7 +945,7 @@ for(var i=0;i<monday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(1, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(1, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: monday[i].name,
+          title: monday[i].name+'\n'+monday[i].CRN.number,
           content: monday[i].type,
           category:'Personnal'};
           events.push(initialEvent);
@@ -967,7 +967,7 @@ for(var i=0;i<tuesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(2, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(2, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: tuesday[i].name,
+          title: tuesday[i].name+'\n'+tuesday[i].CRN.number,
           content: tuesday[i].type,
           category:'Professionnal'};
           events.push(initialEvent);
@@ -989,7 +989,7 @@ for(var i=0;i<wednesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(3, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(3, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: wednesday[i].name,
+          title: wednesday[i].name+'\n'+wednesday[i].CRN.number,
           content: wednesday[i].type,
           category:'Arrobe'};
           events.push(initialEvent);
@@ -1011,7 +1011,7 @@ for(var i=0;i<thursday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(4, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(4, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: thursday[i].name,
+          title: thursday[i].name+'\n'+thursday[i].CRN.number,
           content: thursday[i].type,
           category:'Private'};
           events.push(initialEvent);
@@ -1033,7 +1033,7 @@ for(var i=0;i<friday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(5, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(5, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: friday[i].name,
+          title: friday[i].name+'\n'+friday[i].CRN.number,
           content: friday[i].type,
           category:'Anything else'};
           events.push(initialEvent);
@@ -1236,7 +1236,7 @@ for(var i=0;i<monday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(1, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(1, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: monday[i].name,
+          title: monday[i].name+'\n'+monday[i].CRN.number,
           content: monday[i].type,
           category:'Personnal'};
           events.push(initialEvent);
@@ -1258,7 +1258,7 @@ for(var i=0;i<tuesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(2, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(2, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: tuesday[i].name,
+          title: tuesday[i].name+'\n'+tuesday[i].CRN.number,
           content: tuesday[i].type,
           category:'Professionnal'};
           events.push(initialEvent);
@@ -1280,7 +1280,7 @@ for(var i=0;i<wednesday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(3, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(3, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: wednesday[i].name,
+          title: wednesday[i].name+'\n'+wednesday[i].CRN.number,
           content: wednesday[i].type,
           category:'Arrobe'};
           events.push(initialEvent);
@@ -1302,7 +1302,7 @@ for(var i=0;i<thursday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(4, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(4, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: thursday[i].name,
+          title: thursday[i].name+'\n'+ thursday[i].CRN.number,
           content: thursday[i].type,
           category:'Private'};
           events.push(initialEvent);
@@ -1324,7 +1324,7 @@ for(var i=0;i<friday.length;i++)
 
   initialEvent={ start: now.startOf('week').add(5, 'days').add(fromHours, 'h').add(fromMinutes,'m').format('X'),
           end: now.startOf('week').add(5, 'days').add(toHours, 'h').add(toMinutes,'m').format('X'),
-          title: friday[i].name,
+          title: friday[i].name+'\n'+friday[i].CRN.number,
           content: friday[i].type,
           category:'Anything else'};
           events.push(initialEvent);

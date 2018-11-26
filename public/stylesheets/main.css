@@ -537,6 +537,7 @@ width: 5%;
   height: 30px;
   font: 30px/1 Arial,sans-serif;
   text-align: center;
+  border-radius: 5px;
   
   }
   .qty
@@ -567,6 +568,7 @@ width: 5%;
   text-align: center;
   
   background-clip: padding-box;
+  border-radius: 5px;
 }
 #numberOfCourses {
   text-align: center;
@@ -667,4 +669,13 @@ em.event-name
   margin:0 auto;
   width: 100px;
   text-align: center;
+}
+
+
+.courseName input[type="text"]
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 35px;
 }

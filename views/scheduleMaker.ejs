@@ -45,7 +45,7 @@
               <a class="nav-link" href="/secret">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="/pdfs/CV.pdf">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="mailto:hr@bauitools.com">Contact Us</a>
@@ -53,7 +53,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
               <div class="dropdown-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="/scheduleMaker">Schedule Maker</a>
+                <a class="dropdown-item" href="/scheduleMaker" style="color:#40356f">Schedule Maker</a>
                 <a class="dropdown-item" href="/tuitionCalculator">Tuition Calculator</a>
                 <a class="dropdown-item" href="/petitions">Petition Submission</a>
               </div>
@@ -112,7 +112,7 @@
                 </script>
                     <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
               </div>
-              <div class="tab" >
+              <div class="tab courseName" >
                   <h1 class="jumbotron-heading">Schedule Maker</h1>
                   <p class="lead text-muted">Please enter course names</p>
 
@@ -186,12 +186,15 @@ document.getElementById("nextTab").appendChild(para);
 
         for (i=0;i<coursesCount;i++){
                 // Append a node with a random text
-                inputCourseNumber.appendChild(document.createTextNode("Course " + (i+1)+":  "));
+               // inputCourseNumber.appendChild(document.createTextNode("Course " + (i+1)+":  "));
+               
                 // Create an <input> element, set its type and name attributes
                 var input = document.createElement("input");
+              
                 input.type = "text";
                 input.name = "member" + i;
                 input.id = "course"+(i+1);
+                input.placeholder="Course "+(i+1);
                 inputCourseNumber.appendChild(input);
                 // Append a line break 
                 inputCourseNumber.appendChild(document.createElement("br"));

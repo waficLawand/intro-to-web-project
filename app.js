@@ -315,7 +315,15 @@ app.get("/secret", function(req,res)
 
 app.get("/tuitionCalculator",function(req,res)
     {
-        res.render("tuitionCalc.ejs",{loginStatus:isLoggedin,user:loggedInUser,userId:loggedInId});
+        if(isLoggedin)
+        {
+            res.render("tuitionCalc.ejs",{loginStatus:isLoggedin,user:loggedInUser,userId:loggedInId});
+        } else
+        {
+            console.log("NOT LOGGED IN!");
+            res.render("signup.ejs",{loginStatus:isLoggedin,user:loggedInUser,error:"You should be logged in to access this page!"});
+        }
+       
     });
 
 app.get("/scheduleMaker",function(req,res)
@@ -327,7 +335,7 @@ app.get("/scheduleMaker",function(req,res)
     } else
     {
         console.log("NOT LOGGED IN!");
-        res.redirect("/login");
+        res.render("signup.ejs",{loginStatus:isLoggedin,user:loggedInUser,error:"You should be logged in to access this page!"});
     }
     
 });

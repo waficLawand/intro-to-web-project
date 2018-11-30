@@ -58,7 +58,7 @@
                       
                       </div>
                       <div class="progress" style="width:40%">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%=sqlData[i].votes%>%">75/100</div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%=sqlData[i].votes%>%"><%=sqlData[i].votes%>/<%=sqlData[i].signatureGoal%></div>
                           </div>
                   </div>
                       <!--<form action="/petitionSigned/:<%=sqlData[i].id%>" method="POST"><%if (flag) {%>SIGNED!!<%} else {%><a><button class="btn btn-primary">Sign Petition</button></a><%}%></form>-->

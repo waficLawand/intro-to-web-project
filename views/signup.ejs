@@ -1,5 +1,6 @@
 <%include partials/header%>
-    <div class="register" >
+
+        <div class="register" >
             <% if(error && error.length > 0){ %>
                 <div class="alert alert-danger" role="alert">
                     <%= error %>
@@ -37,7 +38,7 @@
                                     <input type="text" class="form-control" placeholder="Last Name" name="lastName" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="ID" name="id" required/>
+                                    <input type="number" class="form-control" placeholder="ID" name="id" required/>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control"  placeholder="Password" name="password" required />
@@ -51,7 +52,7 @@
                                     <input type="email" class="form-control" placeholder="Your Email" name="email" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text"  name="phoneNumber" class="form-control" placeholder="Your Phone Number" required/>
+                                    <input type="tel" pattern="[0-9]{2}-[0-9]{6}" name="phoneNumber" class="form-control" placeholder="Number XX-XXXXXX" required/>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="faculty">
@@ -121,5 +122,6 @@
         </div>
 
     </div>
+    
    
 <%include partials/footer%>

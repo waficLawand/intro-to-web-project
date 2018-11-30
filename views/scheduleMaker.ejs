@@ -262,7 +262,7 @@ document.getElementById("nextTab").appendChild(para);
 
         </section>
     <div id= "nbOfScheds">
-      <p id="navigatingThroughScheds"></p>
+      <span id="navigatingThroughScheds"></span>
 
     </div>
 
@@ -580,19 +580,22 @@ if(allSchedules.length>0)
 {
   var next =document.createElement('button');  
   next.id = "next";
-    var text = document.createTextNode("Next");
+    var text = document.createTextNode(">");
     next.appendChild(text);
     var previous =document.createElement('button');  
-  previous.id = "previous";
-    var text = document.createTextNode("Previous");
-    previous.appendChild(text);
-    previous.disabled = true;
 
-  document.getElementById("nbOfScheds").appendChild(previous);
   document.getElementById("nbOfScheds").appendChild(next);
 
 
-  document.getElementById("navigatingThroughScheds").innerHTML=(schedCounter+1)+"/"+allSchedules.length+"";
+  var schedText = document.createElement("span");
+      schedText.id = "schedText";
+      schedText.innerHTML=(schedCounter+1)+"/"+allSchedules.length+"";
+      document.getElementById("nbOfScheds").appendChild(schedText);
+  previous.id = "previous";
+    var text = document.createTextNode("<");
+    previous.appendChild(text);
+    previous.disabled = true;
+    document.getElementById("nbOfScheds").appendChild(previous);
 }
 
   for(var j =0;j<allSchedules[0].length;j++)

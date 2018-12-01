@@ -697,3 +697,30 @@ em.event-name
   padding: 8px 16px;
   border: none;
 }
+#nbOfScheds
+{
+  position: relative;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 250px;
+    height: 50px;
+    padding-left: 30px;
+    
+}
+#calendar
+{
+ width: 95%;
+ 
+ margin: 0 auto;
+}
+#schedText
+{
+  margin-left: 15px;
+  margin-right:15px;
+  font-weight: bold;
+  font-size: 30px;
+  
+}

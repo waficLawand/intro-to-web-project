@@ -1,4 +1,90 @@
-<%include partials/header%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Having trouble making your college weekly schedule? This personalized portal is designed for students to create their best-fitting schedule, calculate their tuition, submit a petition and more!">
+    <meta name="author" content="Wafic Lawand and Salwa Al Khatib">
+    <meta name="keywords" content="Beirut Arab University, BAU, students, schedule maker, petition submission, tuition calculator">
+    <link rel='icon' href='/assets/no_name1.ico' type='image/x-icon' height:17px/>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <title>BAU iTools</title>
+    <!-- Font Family -->
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+  
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+  <style>
+  .navbar{
+    background: #40356f !important;
+    
+  }
+  .navbar-dark .navbar-brand, .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-nav .active>.nav-link, .nav-item.nav-link, .nav-link.disabled, .navbar-dark .navbar-nav .nav-link{
+ color:white !important;
+}</style>
+  <body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <img width="55" height ="55" id="navlogo" src="/assets/no_name1.png">
+      <a class="navbar-brand" href="/secret">BAU iTools</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/secret">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pdfs/CV.pdf" download>About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="mailto:hr@bauitools.com">Contact Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="/scheduleMaker">Schedule Maker</a>
+              <a class="dropdown-item" href="/tuitionCalculator">Tuition Calculator</a>
+              <a class="dropdown-item" href="/petitions">Petition Submission</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <%if (loginStatus) {%>
+              
+              <li class="nav-item active">
+                <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link" href="#"><%= user %> <span class="sr-only">(current)</span></a>
+                </li>
+                
+              <% } else { %>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/register">Sign Up <span class="sr-only">(current)</span><i class="fa fa-user-plus"></i></a>
+          </li>
+          <li class="nav-item active">
+            
+            <a class="nav-link" href="/login">Log In <span class="sr-only">(current)</span><i class="fa fa-user"></i></a>
+          </li>
+          <% }%>
+          
+        </ul>
+      </div>
+    </nav>
+  
+
+  
 
 <form class="calc" id="regForm">
 <h1 id="h1calc">Tuition Calculator</h1>
@@ -59,6 +145,7 @@
     </div>
   </form>
   <div id="result"></div>
+  </body></html>
 <script>
 // Form Manipulation
 

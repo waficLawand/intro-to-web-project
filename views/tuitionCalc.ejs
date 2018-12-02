@@ -108,10 +108,8 @@
 <div class="tab">Select Faculty:
     <select oninput="this.className = ''">
       <option value="engineering">Engineering</option>
-    </select>
-</div>
-<!-- fourth tab -->
-<div class="tab">Transportation:
+    </select> <br><br>
+    Transportation:
     <select oninput="this.className = ''" id="transport">
       <option value="notrans">No Transportation</option>
       <option value="one">One Semester</option>
@@ -120,6 +118,16 @@
     </select>
     <p id="insur1"><input type="checkbox" name="insur" id="insur" checked><label for="insur">National Social Security Health Insurance</label></p>
 </div>
+<!-- fourth tab -->
+<!-- <div class="tab">Transportation:
+    <select oninput="this.className = ''" id="transport">
+      <option value="notrans">No Transportation</option>
+      <option value="one">One Semester</option>
+      <option value="two">Two Semesters</option>
+      <option value="full">Full Year (including Summer Semester)</option>
+    </select>
+    <p id="insur1"><input type="checkbox" name="insur" id="insur" checked><label for="insur">National Social Security Health Insurance</label></p>
+</div> -->
 <!-- fifth tab -->
 <div class="tab">Tuition Fees:<br><br>
     <p>University Courses:<input type ="text" id="unitui"  oninput="this.className = ''" ></p>
@@ -208,7 +216,8 @@ function showTab(n) {
       }else {
       health = 0;
       }
-    var total= facultyCourses+uniCourses+transp+health;
+      var wifi=100000;
+    var total= facultyCourses+uniCourses+transp+health+wifi;
     document.getElementById("unitui").value=uniCourses+" L.L."; 
     document.getElementById("factui").value=facultyCourses+" L.L."; 
     document.getElementById("transptui").value=transp+" L.L."; 

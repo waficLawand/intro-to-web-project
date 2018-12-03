@@ -140,8 +140,12 @@ app.post("/login",function(req,res){
 
 
 app.get("/login",function(req,res){
-    
-    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"login",success:"Welcome to BAU iTools!"});
+    if(isLoggedin)
+    {
+        res.render("secret.ejs",{loginStatus:isLoggedin,loadPage:"login",user:loggedInUser})
+    }
+    else
+    res.render("signup.ejs",{loginStatus:isLoggedin,loadPage:"login",success:"Welcome to BAU iTools!",user:loggedInUser});
 });
 
 app.get("/petitions",function(req,res){
